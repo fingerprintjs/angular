@@ -17,9 +17,9 @@
   "author": "FingerprintJS, Inc (https://fingerprint.com)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/fingerprintjs/fingerprintjs-pro-angular/issues"
+    "url": "https://github.com/fingerprintjs/angular/issues"
   },
-  "homepage": "https://github.com/fingerprintjs/fingerprintjs-pro-angular#readme",
+  "homepage": "https://github.com/fingerprintjs/angular#readme",
   "peerDependencies": {
     "@angular/common": ">=15.0.0",
     "@angular/core": ">=15.0.0"
