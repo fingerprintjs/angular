@@ -210,7 +210,7 @@ This method collects on demand fingerprint data.
 
 This repository contains an example Angular application. To run the demo locally:
 
-1. Clone the repository with `git clone git@github.com:fingerprintjs/fingerprintjs-pro-angular.git`.
+1. Clone the repository with `git clone git@github.com:fingerprintjs/angular.git`.
 2. Inside the root folder, run `pnpm install` to install the dependencies.
 3. Create a dev environment file with `cp src/environments/environment.ts src/environments/environment.dev.ts`, and inside, replace `FingerprintJS Pro public key` with your actual public key.
 4. Run `pnpm generate:version` to create an SDK version file.
@@ -220,12 +220,12 @@ The application will start on http://localhost:4200.
 
 ## Support and feedback
 
-To ask questions or provide feedback, use [Issues](https://github.com/fingerprintjs/fingerprintjs-pro-angular/issues). If you need private support, please email us at `oss-support@fingerprint.com`. If you'd like to have a similar Angular wrapper for the [source-available FingerprintJS](https://github.com/fingerprintjs/fingerprintjs), consider creating an issue in the main [FingerprintJS repository](https://github.com/fingerprintjs/fingerprintjs/issues).
+To ask questions or provide feedback, use [Issues](https://github.com/fingerprintjs/angular/issues). If you need private support, please email us at `oss-support@fingerprint.com`. If you'd like to have a similar Angular wrapper for the [source-available FingerprintJS](https://github.com/fingerprintjs/fingerprintjs), consider creating an issue in the main [FingerprintJS repository](https://github.com/fingerprintjs/fingerprintjs/issues).
 
 ## API Reference
 
-See the full [generated API reference](https://fingerprintjs.github.io/fingerprintjs-pro-angular/docs).
+See the full [generated API reference](https://fingerprintjs.github.io/angular/docs).
 
 ## License
 
-This project is licensed under the MIT license. See the [LICENSE](https://github.com/fingerprintjs/fingerprintjs-pro-angular/blob/main/LICENSE) file for more info.
+This project is licensed under the MIT license. See the [LICENSE](https://github.com/fingerprintjs/angular/blob/main/LICENSE) file for more info.
