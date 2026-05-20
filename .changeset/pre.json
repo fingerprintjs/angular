@@ -1,5 +1,5 @@
 {
-  "mode": "pre",
+  "mode": "exit",
   "tag": "test",
   "initialVersions": {
     "@fingerprint/angular": "2.1.0"
