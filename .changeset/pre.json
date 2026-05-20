@@ -6,6 +6,7 @@
   },
   "changesets": [
     "a-tslib-dep",
+    "blue-melons-repeat",
     "free-goats-wait",
     "patch-fix-publish"
   ]
