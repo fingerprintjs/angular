@@ -1,5 +1,11 @@
 # @fingerprint/angular
 
+## 3.0.0-test.2
+
+### Patch Changes
+
+- Remove unused `tslib` dependency. ([f136ff4](https://github.com/fingerprintjs/angular/commit/f136ff46b29eeb8733b2eab924523aa0ff187c6f))
+
 ## 3.0.0-test.1
 
 ### Patch Changes

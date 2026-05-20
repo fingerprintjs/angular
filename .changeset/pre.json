@@ -5,6 +5,7 @@
     "@fingerprint/angular": "2.1.0"
   },
   "changesets": [
+    "a-tslib-dep",
     "free-goats-wait",
     "patch-fix-publish"
   ]
