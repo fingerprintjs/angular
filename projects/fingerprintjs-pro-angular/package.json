@@ -19,6 +19,10 @@
   "bugs": {
     "url": "https://github.com/fingerprintjs/angular/issues"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fingerprintjs/angular"
+  },
   "homepage": "https://github.com/fingerprintjs/angular#readme",
   "publishConfig": {
     "access": "public",
