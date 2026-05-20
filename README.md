@@ -3,15 +3,15 @@
     <picture>
      <source media="(prefers-color-scheme: dark)" srcset="https://fingerprintjs.github.io/home/resources/logo_light.svg" />
      <source media="(prefers-color-scheme: light)" srcset="https://fingerprintjs.github.io/home/resources/logo_dark.svg" />
-     <img src="https://raw.githubusercontent.com/fingerprintjs/fingerprint-pro-server-api-go-sdk/main/res/logo_dark.svg" alt="Fingerprint logo" width="312px" />
+     <img src="https://fingerprintjs.github.io/home/resources/logo_dark.svg" alt="Fingerprint logo" width="312px" />
    </picture>
   </a>
 <p align="center">
-<a href="https://github.com/fingerprintjs/fingerprintjs-pro-angular/actions/workflows/ci.yml">
-  <img src="https://github.com/fingerprintjs/fingerprintjs-pro-angular/actions/workflows/ci.yml/badge.svg" alt="CI badge" />
+<a href="https://github.com/fingerprintjs/angular/actions/workflows/ci.yml">
+  <img src="https://github.com/fingerprintjs/angular/actions/workflows/ci.yml/badge.svg" alt="CI badge" />
 </a>
-<a href="https://fingerprintjs.github.io/fingerprintjs-pro-angular/coverage/">
- <img src="https://fingerprintjs.github.io/fingerprintjs-pro-angular/coverage/badges.svg" alt="coverage">
+<a href="https://fingerprintjs.github.io/angular/coverage/">
+ <img src="https://fingerprintjs.github.io/angular/coverage/badges.svg" alt="coverage">
 </a>
 <a href="https://www.npmjs.com/package/@fingerprintjs/fingerprintjs-pro-angular">
   <img src="https://img.shields.io/npm/v/@fingerprintjs/fingerprintjs-pro-angular.svg" alt="Current NPM version">
@@ -24,7 +24,7 @@
 <a href="https://discord.gg/39EpE2neBg">
   <img src="https://img.shields.io/discord/852099967190433792?style=logo&label=Discord&logo=Discord&logoColor=white" alt="Discord server">
 </a>
-<a href="https://fingerprintjs.github.io/fingerprintjs-pro-angular/">
+<a href="https://fingerprintjs.github.io/angular/">
   <img src="https://img.shields.io/badge/-Documentation-green" alt="Documentation">
 </a>
 
@@ -210,7 +210,7 @@ This method collects on demand fingerprint data.
 
 This repository contains an example Angular application. To run the demo locally:
 
-1. Clone the repository with `git clone git@github.com:fingerprintjs/fingerprintjs-pro-angular.git`.
+1. Clone the repository with `git clone git@github.com:fingerprintjs/angular.git`.
 2. Inside the root folder, run `pnpm install` to install the dependencies.
 3. Create a dev environment file with `cp src/environments/environment.ts src/environments/environment.dev.ts`, and inside, replace `FingerprintJS Pro public key` with your actual public key.
 4. Run `pnpm generate:version` to create an SDK version file.
@@ -220,12 +220,12 @@ The application will start on http://localhost:4200.
 
 ## Support and feedback
 
-To ask questions or provide feedback, use [Issues](https://github.com/fingerprintjs/fingerprintjs-pro-angular/issues). If you need private support, please email us at `oss-support@fingerprint.com`. If you'd like to have a similar Angular wrapper for the [source-available FingerprintJS](https://github.com/fingerprintjs/fingerprintjs), consider creating an issue in the main [FingerprintJS repository](https://github.com/fingerprintjs/fingerprintjs/issues).
+To ask questions or provide feedback, use [Issues](https://github.com/fingerprintjs/angular/issues). If you need private support, please email us at `oss-support@fingerprint.com`. If you'd like to have a similar Angular wrapper for the [source-available FingerprintJS](https://github.com/fingerprintjs/fingerprintjs), consider creating an issue in the main [FingerprintJS repository](https://github.com/fingerprintjs/fingerprintjs/issues).
 
 ## API Reference
 
-See the full [generated API reference](https://fingerprintjs.github.io/fingerprintjs-pro-angular/docs).
+See the full [generated API reference](https://fingerprintjs.github.io/angular/docs).
 
 ## License
 
-This project is licensed under the MIT license. See the [LICENSE](https://github.com/fingerprintjs/fingerprintjs-pro-angular/blob/main/LICENSE) file for more info.
+This project is licensed under the MIT license. See the [LICENSE](https://github.com/fingerprintjs/angular/blob/main/LICENSE) file for more info.
