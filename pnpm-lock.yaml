@@ -156,6 +156,7 @@ importers:
       tslib:
         specifier: ^2.5.0
         version: 2.5.0
+    publishDirectory: ../../dist/fingerprintjs-pro-angular
 
 packages:
 
