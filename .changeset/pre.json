@@ -5,6 +5,7 @@
     "@fingerprint/angular": "2.1.0"
   },
   "changesets": [
-    "free-goats-wait"
+    "free-goats-wait",
+    "patch-fix-publish"
   ]
 }
