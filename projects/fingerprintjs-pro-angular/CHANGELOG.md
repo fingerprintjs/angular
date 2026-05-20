@@ -1,5 +1,11 @@
 # @fingerprint/angular
 
+## 3.0.0-test.3
+
+### Patch Changes
+
+- Put `tslib` back into dependencies as `ng-packagr` adds it as a part of the build ([51fade4](https://github.com/fingerprintjs/angular/commit/51fade4a4c6c26a8ac9ed50bab6da486f54fa23e))
+
 ## 3.0.0-test.2
 
 ### Patch Changes
