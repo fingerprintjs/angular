@@ -23,7 +23,8 @@
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/",
-    "provenance": true
+    "provenance": true,
+    "directory": "../../dist/fingerprintjs-pro-angular"
   },
   "peerDependencies": {
     "@angular/common": ">=15.0.0",
