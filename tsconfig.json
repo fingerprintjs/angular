@@ -12,7 +12,7 @@
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
     "paths": {
-      "@fingerprintjs/fingerprintjs-pro-angular": [
+      "@fingerprint/angular": [
         "projects/fingerprintjs-pro-angular/src/public-api"
       ]
     },

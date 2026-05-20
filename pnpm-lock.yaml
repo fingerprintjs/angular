@@ -31,13 +31,13 @@ importers:
         version: 15.2.10(@angular/common@15.2.10(@angular/core@15.2.10(rxjs@7.5.7)(zone.js@0.11.5))(rxjs@7.5.7))(@angular/compiler@15.2.10(@angular/core@15.2.10(rxjs@7.5.7)(zone.js@0.11.5)))(@angular/core@15.2.10(rxjs@7.5.7)(zone.js@0.11.5))(@angular/platform-browser@15.2.10(@angular/animations@15.2.10(@angular/core@15.2.10(rxjs@7.5.7)(zone.js@0.11.5)))(@angular/common@15.2.10(@angular/core@15.2.10(rxjs@7.5.7)(zone.js@0.11.5))(rxjs@7.5.7))(@angular/core@15.2.10(rxjs@7.5.7)(zone.js@0.11.5)))
       '@angular/platform-server':
         specifier: ^15.2.10
-        version: 15.2.10(ilc5b3yotbseevm3xgvvpgxpgm)
+        version: 15.2.10(597020a0fe8c1c77567a7c05da2eed63)
       '@angular/router':
         specifier: ^15.2.10
         version: 15.2.10(@angular/common@15.2.10(@angular/core@15.2.10(rxjs@7.5.7)(zone.js@0.11.5))(rxjs@7.5.7))(@angular/core@15.2.10(rxjs@7.5.7)(zone.js@0.11.5))(@angular/platform-browser@15.2.10(@angular/animations@15.2.10(@angular/core@15.2.10(rxjs@7.5.7)(zone.js@0.11.5)))(@angular/common@15.2.10(@angular/core@15.2.10(rxjs@7.5.7)(zone.js@0.11.5))(rxjs@7.5.7))(@angular/core@15.2.10(rxjs@7.5.7)(zone.js@0.11.5)))(rxjs@7.5.7)
       '@nguniversal/express-engine':
         specifier: ^15.2.1
-        version: 15.2.1(@angular/common@15.2.10(@angular/core@15.2.10(rxjs@7.5.7)(zone.js@0.11.5))(rxjs@7.5.7))(@angular/core@15.2.10(rxjs@7.5.7)(zone.js@0.11.5))(@angular/platform-server@15.2.10(ilc5b3yotbseevm3xgvvpgxpgm))(express@4.20.0)
+        version: 15.2.1(@angular/common@15.2.10(@angular/core@15.2.10(rxjs@7.5.7)(zone.js@0.11.5))(rxjs@7.5.7))(@angular/core@15.2.10(rxjs@7.5.7)(zone.js@0.11.5))(@angular/platform-server@15.2.10(597020a0fe8c1c77567a7c05da2eed63))(express@4.20.0)
       express:
         specifier: ^4.20.0
         version: 4.20.0
@@ -53,7 +53,7 @@ importers:
     devDependencies:
       '@angular-devkit/build-angular':
         specifier: ^15.2.10
-        version: 15.2.10(@angular/compiler-cli@15.2.10(@angular/compiler@15.2.10(@angular/core@15.2.10(rxjs@7.5.7)(zone.js@0.11.5)))(typescript@4.9.5))(@angular/platform-server@15.2.10(ilc5b3yotbseevm3xgvvpgxpgm))(ng-packagr@15.2.2(@angular/compiler-cli@15.2.10(@angular/compiler@15.2.10(@angular/core@15.2.10(rxjs@7.5.7)(zone.js@0.11.5)))(typescript@4.9.5))(tslib@2.5.0)(typescript@4.9.5))(typescript@4.9.5)
+        version: 15.2.10(@angular/compiler-cli@15.2.10(@angular/compiler@15.2.10(@angular/core@15.2.10(rxjs@7.5.7)(zone.js@0.11.5)))(typescript@4.9.5))(@angular/platform-server@15.2.10(597020a0fe8c1c77567a7c05da2eed63))(ng-packagr@15.2.2(@angular/compiler-cli@15.2.10(@angular/compiler@15.2.10(@angular/core@15.2.10(rxjs@7.5.7)(zone.js@0.11.5)))(typescript@4.9.5))(tslib@2.5.0)(typescript@4.9.5))(typescript@4.9.5)
       '@angular-eslint/schematics':
         specifier: ^15.2.1
         version: 15.2.1(@angular/cli@15.2.10(chokidar@3.5.3))(eslint@8.56.0)(typescript@4.9.5)
@@ -89,7 +89,7 @@ importers:
         version: 0.1.0
       '@nguniversal/builders':
         specifier: ^15.2.1
-        version: 15.2.1(@angular-devkit/build-angular@15.2.10(@angular/compiler-cli@15.2.10(@angular/compiler@15.2.10(@angular/core@15.2.10(rxjs@7.5.7)(zone.js@0.11.5)))(typescript@4.9.5))(@angular/platform-server@15.2.10(ilc5b3yotbseevm3xgvvpgxpgm))(ng-packagr@15.2.2(@angular/compiler-cli@15.2.10(@angular/compiler@15.2.10(@angular/core@15.2.10(rxjs@7.5.7)(zone.js@0.11.5)))(typescript@4.9.5))(tslib@2.5.0)(typescript@4.9.5))(typescript@4.9.5))(@angular/common@15.2.10(@angular/core@15.2.10(rxjs@7.5.7)(zone.js@0.11.5))(rxjs@7.5.7))(@angular/core@15.2.10(rxjs@7.5.7)(zone.js@0.11.5))(@types/express@4.17.13)(chokidar@3.5.3)(typescript@4.9.5)
+        version: 15.2.1(@angular-devkit/build-angular@15.2.10(@angular/compiler-cli@15.2.10(@angular/compiler@15.2.10(@angular/core@15.2.10(rxjs@7.5.7)(zone.js@0.11.5)))(typescript@4.9.5))(@angular/platform-server@15.2.10(597020a0fe8c1c77567a7c05da2eed63))(ng-packagr@15.2.2(@angular/compiler-cli@15.2.10(@angular/compiler@15.2.10(@angular/core@15.2.10(rxjs@7.5.7)(zone.js@0.11.5)))(typescript@4.9.5))(tslib@2.5.0)(typescript@4.9.5))(typescript@4.9.5))(@angular/common@15.2.10(@angular/core@15.2.10(rxjs@7.5.7)(zone.js@0.11.5))(rxjs@7.5.7))(@angular/core@15.2.10(rxjs@7.5.7)(zone.js@0.11.5))(@types/express@4.17.13)(chokidar@3.5.3)(typescript@4.9.5)
       '@types/express':
         specifier: ^4.17.0
         version: 4.17.13
@@ -111,6 +111,9 @@ importers:
       cz-conventional-changelog:
         specifier: ^3.3.0
         version: 3.3.0
+      eslint:
+        specifier: ^8.56.0
+        version: 8.56.0
       husky:
         specifier: ^8.0.2
         version: 8.0.2
@@ -122,7 +125,7 @@ importers:
         version: 29.7.0(@types/node@12.20.52)(ts-node@10.9.1(@types/node@12.20.52)(typescript@4.9.5))
       jest-preset-angular:
         specifier: ^14.0.3
-        version: 14.0.3(7gvp3wt3gc5ejwkqgwx7v5z5gy)
+        version: 14.0.3(706f2d62191d92ffccf5bdc594edaaed)
       lint-staged:
         specifier: ^13.0.3
         version: 13.0.3(enquirer@2.4.1)
@@ -4135,10 +4138,6 @@ packages:
     resolution: {integrity: sha512-okMH7OXXJ7YrN9Ok3/SXrnu4iX9yOk+25nqX4imS2npuvTYDmo/QEZoqwZkYaIDk3jVvBOTOIEgEhaLOynBS9g==}
     hasBin: true
 
-  js-yaml@4.1.0:
-    resolution: {integrity: sha512-wpxZs9NoxZaJESJGIZTyDEaYpl0FKSA+FB9aJiyemKhMwkxQg63h4T1KJgUGHpTqPDNRcmmYLugrRjJlBtWvRA==}
-    hasBin: true
-
   js-yaml@4.1.1:
     resolution: {integrity: sha512-qQKT4zQxXl8lLwBtHMWwaTcGfFOZviOJet3Oy/xmGk2gZH677CJM9EvtfdSkgWcATZhj/55JZ0rmy3myCT5lsA==}
     hasBin: true
@@ -6311,7 +6310,7 @@ snapshots:
     transitivePeerDependencies:
       - chokidar
 
-  '@angular-devkit/build-angular@15.2.10(@angular/compiler-cli@15.2.10(@angular/compiler@15.2.10(@angular/core@15.2.10(rxjs@7.5.7)(zone.js@0.11.5)))(typescript@4.9.5))(@angular/platform-server@15.2.10(ilc5b3yotbseevm3xgvvpgxpgm))(ng-packagr@15.2.2(@angular/compiler-cli@15.2.10(@angular/compiler@15.2.10(@angular/core@15.2.10(rxjs@7.5.7)(zone.js@0.11.5)))(typescript@4.9.5))(tslib@2.5.0)(typescript@4.9.5))(typescript@4.9.5)':
+  '@angular-devkit/build-angular@15.2.10(@angular/compiler-cli@15.2.10(@angular/compiler@15.2.10(@angular/core@15.2.10(rxjs@7.5.7)(zone.js@0.11.5)))(typescript@4.9.5))(@angular/platform-server@15.2.10(597020a0fe8c1c77567a7c05da2eed63))(ng-packagr@15.2.2(@angular/compiler-cli@15.2.10(@angular/compiler@15.2.10(@angular/core@15.2.10(rxjs@7.5.7)(zone.js@0.11.5)))(typescript@4.9.5))(tslib@2.5.0)(typescript@4.9.5))(typescript@4.9.5)':
     dependencies:
       '@ampproject/remapping': 2.2.0
       '@angular-devkit/architect': 0.1502.10(chokidar@3.5.3)
@@ -6376,7 +6375,7 @@ snapshots:
       webpack-merge: 5.8.0
       webpack-subresource-integrity: 5.1.0(webpack@5.76.1(esbuild@0.17.8))
     optionalDependencies:
-      '@angular/platform-server': 15.2.10(ilc5b3yotbseevm3xgvvpgxpgm)
+      '@angular/platform-server': 15.2.10(597020a0fe8c1c77567a7c05da2eed63)
       esbuild: 0.17.8
       ng-packagr: 15.2.2(@angular/compiler-cli@15.2.10(@angular/compiler@15.2.10(@angular/core@15.2.10(rxjs@7.5.7)(zone.js@0.11.5)))(typescript@4.9.5))(tslib@2.5.0)(typescript@4.9.5)
     transitivePeerDependencies:
@@ -6557,7 +6556,7 @@ snapshots:
     optionalDependencies:
       '@angular/animations': 15.2.10(@angular/core@15.2.10(rxjs@7.5.7)(zone.js@0.11.5))
 
-  '@angular/platform-server@15.2.10(ilc5b3yotbseevm3xgvvpgxpgm)':
+  '@angular/platform-server@15.2.10(597020a0fe8c1c77567a7c05da2eed63)':
     dependencies:
       '@angular/animations': 15.2.10(@angular/core@15.2.10(rxjs@7.5.7)(zone.js@0.11.5))
       '@angular/common': 15.2.10(@angular/core@15.2.10(rxjs@7.5.7)(zone.js@0.11.5))(rxjs@7.5.7)
@@ -6968,33 +6967,15 @@ snapshots:
       '@babel/core': 7.20.12
       '@babel/helper-plugin-utils': 7.24.0
 
-  '@babel/plugin-syntax-async-generators@7.8.4(@babel/core@7.24.0)':
-    dependencies:
-      '@babel/core': 7.24.0
-      '@babel/helper-plugin-utils': 7.24.0
-    optional: true
-
   '@babel/plugin-syntax-bigint@7.8.3(@babel/core@7.20.12)':
     dependencies:
       '@babel/core': 7.20.12
       '@babel/helper-plugin-utils': 7.24.0
 
-  '@babel/plugin-syntax-bigint@7.8.3(@babel/core@7.24.0)':
-    dependencies:
-      '@babel/core': 7.24.0
-      '@babel/helper-plugin-utils': 7.24.0
-    optional: true
-
   '@babel/plugin-syntax-class-properties@7.12.13(@babel/core@7.20.12)':
     dependencies:
       '@babel/core': 7.20.12
       '@babel/helper-plugin-utils': 7.24.0
-
-  '@babel/plugin-syntax-class-properties@7.12.13(@babel/core@7.24.0)':
-    dependencies:
-      '@babel/core': 7.24.0
-      '@babel/helper-plugin-utils': 7.24.0
-    optional: true
 
   '@babel/plugin-syntax-class-static-block@7.14.5(@babel/core@7.20.12)':
     dependencies:
@@ -7021,22 +7002,10 @@ snapshots:
       '@babel/core': 7.20.12
       '@babel/helper-plugin-utils': 7.24.0
 
-  '@babel/plugin-syntax-import-meta@7.10.4(@babel/core@7.24.0)':
-    dependencies:
-      '@babel/core': 7.24.0
-      '@babel/helper-plugin-utils': 7.24.0
-    optional: true
-
   '@babel/plugin-syntax-json-strings@7.8.3(@babel/core@7.20.12)':
     dependencies:
       '@babel/core': 7.20.12
       '@babel/helper-plugin-utils': 7.24.0
-
-  '@babel/plugin-syntax-json-strings@7.8.3(@babel/core@7.24.0)':
-    dependencies:
-      '@babel/core': 7.24.0
-      '@babel/helper-plugin-utils': 7.24.0
-    optional: true
 
   '@babel/plugin-syntax-jsx@7.23.3(@babel/core@7.20.12)':
     dependencies:
@@ -7048,66 +7017,30 @@ snapshots:
       '@babel/core': 7.20.12
       '@babel/helper-plugin-utils': 7.24.0
 
-  '@babel/plugin-syntax-logical-assignment-operators@7.10.4(@babel/core@7.24.0)':
-    dependencies:
-      '@babel/core': 7.24.0
-      '@babel/helper-plugin-utils': 7.24.0
-    optional: true
-
   '@babel/plugin-syntax-nullish-coalescing-operator@7.8.3(@babel/core@7.20.12)':
     dependencies:
       '@babel/core': 7.20.12
       '@babel/helper-plugin-utils': 7.24.0
-
-  '@babel/plugin-syntax-nullish-coalescing-operator@7.8.3(@babel/core@7.24.0)':
-    dependencies:
-      '@babel/core': 7.24.0
-      '@babel/helper-plugin-utils': 7.24.0
-    optional: true
 
   '@babel/plugin-syntax-numeric-separator@7.10.4(@babel/core@7.20.12)':
     dependencies:
       '@babel/core': 7.20.12
       '@babel/helper-plugin-utils': 7.24.0
 
-  '@babel/plugin-syntax-numeric-separator@7.10.4(@babel/core@7.24.0)':
-    dependencies:
-      '@babel/core': 7.24.0
-      '@babel/helper-plugin-utils': 7.24.0
-    optional: true
-
   '@babel/plugin-syntax-object-rest-spread@7.8.3(@babel/core@7.20.12)':
     dependencies:
       '@babel/core': 7.20.12
       '@babel/helper-plugin-utils': 7.24.0
-
-  '@babel/plugin-syntax-object-rest-spread@7.8.3(@babel/core@7.24.0)':
-    dependencies:
-      '@babel/core': 7.24.0
-      '@babel/helper-plugin-utils': 7.24.0
-    optional: true
 
   '@babel/plugin-syntax-optional-catch-binding@7.8.3(@babel/core@7.20.12)':
     dependencies:
       '@babel/core': 7.20.12
       '@babel/helper-plugin-utils': 7.24.0
 
-  '@babel/plugin-syntax-optional-catch-binding@7.8.3(@babel/core@7.24.0)':
-    dependencies:
-      '@babel/core': 7.24.0
-      '@babel/helper-plugin-utils': 7.24.0
-    optional: true
-
   '@babel/plugin-syntax-optional-chaining@7.8.3(@babel/core@7.20.12)':
     dependencies:
       '@babel/core': 7.20.12
       '@babel/helper-plugin-utils': 7.24.0
-
-  '@babel/plugin-syntax-optional-chaining@7.8.3(@babel/core@7.24.0)':
-    dependencies:
-      '@babel/core': 7.24.0
-      '@babel/helper-plugin-utils': 7.24.0
-    optional: true
 
   '@babel/plugin-syntax-private-property-in-object@7.14.5(@babel/core@7.20.12)':
     dependencies:
@@ -7118,12 +7051,6 @@ snapshots:
     dependencies:
       '@babel/core': 7.20.12
       '@babel/helper-plugin-utils': 7.24.0
-
-  '@babel/plugin-syntax-top-level-await@7.14.5(@babel/core@7.24.0)':
-    dependencies:
-      '@babel/core': 7.24.0
-      '@babel/helper-plugin-utils': 7.24.0
-    optional: true
 
   '@babel/plugin-syntax-typescript@7.17.12(@babel/core@7.20.12)':
     dependencies:
@@ -7873,7 +7800,7 @@ snapshots:
       globals: 13.24.0
       ignore: 5.3.1
       import-fresh: 3.3.0
-      js-yaml: 4.1.0
+      js-yaml: 4.1.1
       minimatch: 3.1.2
       strip-json-comments: 3.1.1
     transitivePeerDependencies:
@@ -8172,10 +8099,10 @@ snapshots:
       typescript: 4.9.5
       webpack: 5.76.1(esbuild@0.17.8)
 
-  '@nguniversal/builders@15.2.1(@angular-devkit/build-angular@15.2.10(@angular/compiler-cli@15.2.10(@angular/compiler@15.2.10(@angular/core@15.2.10(rxjs@7.5.7)(zone.js@0.11.5)))(typescript@4.9.5))(@angular/platform-server@15.2.10(ilc5b3yotbseevm3xgvvpgxpgm))(ng-packagr@15.2.2(@angular/compiler-cli@15.2.10(@angular/compiler@15.2.10(@angular/core@15.2.10(rxjs@7.5.7)(zone.js@0.11.5)))(typescript@4.9.5))(tslib@2.5.0)(typescript@4.9.5))(typescript@4.9.5))(@angular/common@15.2.10(@angular/core@15.2.10(rxjs@7.5.7)(zone.js@0.11.5))(rxjs@7.5.7))(@angular/core@15.2.10(rxjs@7.5.7)(zone.js@0.11.5))(@types/express@4.17.13)(chokidar@3.5.3)(typescript@4.9.5)':
+  '@nguniversal/builders@15.2.1(@angular-devkit/build-angular@15.2.10(@angular/compiler-cli@15.2.10(@angular/compiler@15.2.10(@angular/core@15.2.10(rxjs@7.5.7)(zone.js@0.11.5)))(typescript@4.9.5))(@angular/platform-server@15.2.10(597020a0fe8c1c77567a7c05da2eed63))(ng-packagr@15.2.2(@angular/compiler-cli@15.2.10(@angular/compiler@15.2.10(@angular/core@15.2.10(rxjs@7.5.7)(zone.js@0.11.5)))(typescript@4.9.5))(tslib@2.5.0)(typescript@4.9.5))(typescript@4.9.5))(@angular/common@15.2.10(@angular/core@15.2.10(rxjs@7.5.7)(zone.js@0.11.5))(rxjs@7.5.7))(@angular/core@15.2.10(rxjs@7.5.7)(zone.js@0.11.5))(@types/express@4.17.13)(chokidar@3.5.3)(typescript@4.9.5)':
     dependencies:
       '@angular-devkit/architect': 0.1502.10(chokidar@3.5.3)
-      '@angular-devkit/build-angular': 15.2.10(@angular/compiler-cli@15.2.10(@angular/compiler@15.2.10(@angular/core@15.2.10(rxjs@7.5.7)(zone.js@0.11.5)))(typescript@4.9.5))(@angular/platform-server@15.2.10(ilc5b3yotbseevm3xgvvpgxpgm))(ng-packagr@15.2.2(@angular/compiler-cli@15.2.10(@angular/compiler@15.2.10(@angular/core@15.2.10(rxjs@7.5.7)(zone.js@0.11.5)))(typescript@4.9.5))(tslib@2.5.0)(typescript@4.9.5))(typescript@4.9.5)
+      '@angular-devkit/build-angular': 15.2.10(@angular/compiler-cli@15.2.10(@angular/compiler@15.2.10(@angular/core@15.2.10(rxjs@7.5.7)(zone.js@0.11.5)))(typescript@4.9.5))(@angular/platform-server@15.2.10(597020a0fe8c1c77567a7c05da2eed63))(ng-packagr@15.2.2(@angular/compiler-cli@15.2.10(@angular/compiler@15.2.10(@angular/core@15.2.10(rxjs@7.5.7)(zone.js@0.11.5)))(typescript@4.9.5))(tslib@2.5.0)(typescript@4.9.5))(typescript@4.9.5)
       '@angular-devkit/core': 15.2.10(chokidar@3.5.3)
       '@nguniversal/common': 15.2.1(@angular/common@15.2.10(@angular/core@15.2.10(rxjs@7.5.7)(zone.js@0.11.5))(rxjs@7.5.7))(@angular/core@15.2.10(rxjs@7.5.7)(zone.js@0.11.5))
       browser-sync: 2.27.10
@@ -8211,11 +8138,11 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@nguniversal/express-engine@15.2.1(@angular/common@15.2.10(@angular/core@15.2.10(rxjs@7.5.7)(zone.js@0.11.5))(rxjs@7.5.7))(@angular/core@15.2.10(rxjs@7.5.7)(zone.js@0.11.5))(@angular/platform-server@15.2.10(ilc5b3yotbseevm3xgvvpgxpgm))(express@4.20.0)':
+  '@nguniversal/express-engine@15.2.1(@angular/common@15.2.10(@angular/core@15.2.10(rxjs@7.5.7)(zone.js@0.11.5))(rxjs@7.5.7))(@angular/core@15.2.10(rxjs@7.5.7)(zone.js@0.11.5))(@angular/platform-server@15.2.10(597020a0fe8c1c77567a7c05da2eed63))(express@4.20.0)':
     dependencies:
       '@angular/common': 15.2.10(@angular/core@15.2.10(rxjs@7.5.7)(zone.js@0.11.5))(rxjs@7.5.7)
       '@angular/core': 15.2.10(rxjs@7.5.7)(zone.js@0.11.5)
-      '@angular/platform-server': 15.2.10(ilc5b3yotbseevm3xgvvpgxpgm)
+      '@angular/platform-server': 15.2.10(597020a0fe8c1c77567a7c05da2eed63)
       '@nguniversal/common': 15.2.1(@angular/common@15.2.10(@angular/core@15.2.10(rxjs@7.5.7)(zone.js@0.11.5))(rxjs@7.5.7))(@angular/core@15.2.10(rxjs@7.5.7)(zone.js@0.11.5))
       express: 4.20.0
       tslib: 2.5.0
@@ -9088,20 +9015,6 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  babel-jest@29.7.0(@babel/core@7.24.0):
-    dependencies:
-      '@babel/core': 7.24.0
-      '@jest/transform': 29.7.0
-      '@types/babel__core': 7.1.19
-      babel-plugin-istanbul: 6.1.1
-      babel-preset-jest: 29.6.3(@babel/core@7.24.0)
-      chalk: 4.1.2
-      graceful-fs: 4.2.10
-      slash: 3.0.0
-    transitivePeerDependencies:
-      - supports-color
-    optional: true
-
   babel-loader@9.1.2(@babel/core@7.20.12)(webpack@5.76.1(esbuild@0.17.8)):
     dependencies:
       '@babel/core': 7.20.12
@@ -9166,35 +9079,11 @@ snapshots:
       '@babel/plugin-syntax-optional-chaining': 7.8.3(@babel/core@7.20.12)
       '@babel/plugin-syntax-top-level-await': 7.14.5(@babel/core@7.20.12)
 
-  babel-preset-current-node-syntax@1.0.1(@babel/core@7.24.0):
-    dependencies:
-      '@babel/core': 7.24.0
-      '@babel/plugin-syntax-async-generators': 7.8.4(@babel/core@7.24.0)
-      '@babel/plugin-syntax-bigint': 7.8.3(@babel/core@7.24.0)
-      '@babel/plugin-syntax-class-properties': 7.12.13(@babel/core@7.24.0)
-      '@babel/plugin-syntax-import-meta': 7.10.4(@babel/core@7.24.0)
-      '@babel/plugin-syntax-json-strings': 7.8.3(@babel/core@7.24.0)
-      '@babel/plugin-syntax-logical-assignment-operators': 7.10.4(@babel/core@7.24.0)
-      '@babel/plugin-syntax-nullish-coalescing-operator': 7.8.3(@babel/core@7.24.0)
-      '@babel/plugin-syntax-numeric-separator': 7.10.4(@babel/core@7.24.0)
-      '@babel/plugin-syntax-object-rest-spread': 7.8.3(@babel/core@7.24.0)
-      '@babel/plugin-syntax-optional-catch-binding': 7.8.3(@babel/core@7.24.0)
-      '@babel/plugin-syntax-optional-chaining': 7.8.3(@babel/core@7.24.0)
-      '@babel/plugin-syntax-top-level-await': 7.14.5(@babel/core@7.24.0)
-    optional: true
-
   babel-preset-jest@29.6.3(@babel/core@7.20.12):
     dependencies:
       '@babel/core': 7.20.12
       babel-plugin-jest-hoist: 29.6.3
       babel-preset-current-node-syntax: 1.0.1(@babel/core@7.20.12)
-
-  babel-preset-jest@29.6.3(@babel/core@7.24.0):
-    dependencies:
-      '@babel/core': 7.24.0
-      babel-plugin-jest-hoist: 29.6.3
-      babel-preset-current-node-syntax: 1.0.1(@babel/core@7.24.0)
-    optional: true
 
   balanced-match@1.0.2: {}
 
@@ -9693,7 +9582,7 @@ snapshots:
     dependencies:
       '@types/node': 14.18.33
       cosmiconfig: 7.0.1
-      ts-node: 10.9.1(@types/node@14.18.33)(typescript@4.9.5)
+      ts-node: 10.9.1(@types/node@12.20.52)(typescript@4.9.5)
       typescript: 4.9.5
 
   cosmiconfig@7.0.1:
@@ -10181,7 +10070,7 @@ snapshots:
       '@ungap/structured-clone': 1.2.0
       ajv: 6.12.6
       chalk: 4.1.2
-      cross-spawn: 7.0.3
+      cross-spawn: 7.0.6
       debug: 4.3.4
       doctrine: 3.0.0
       escape-string-regexp: 4.0.0
@@ -10200,7 +10089,7 @@ snapshots:
       imurmurhash: 0.1.4
       is-glob: 4.0.3
       is-path-inside: 3.0.3
-      js-yaml: 4.1.0
+      js-yaml: 4.1.1
       json-stable-stringify-without-jsonify: 1.0.1
       levn: 0.4.1
       lodash.merge: 4.6.2
@@ -11173,7 +11062,7 @@ snapshots:
       strip-json-comments: 3.1.1
     optionalDependencies:
       '@types/node': 12.20.52
-      ts-node: 10.9.1(@types/node@14.18.33)(typescript@4.9.5)
+      ts-node: 10.9.1(@types/node@12.20.52)(typescript@4.9.5)
     transitivePeerDependencies:
       - babel-plugin-macros
       - supports-color
@@ -11273,9 +11162,9 @@ snapshots:
     optionalDependencies:
       jest-resolve: 29.7.0
 
-  jest-preset-angular@14.0.3(7gvp3wt3gc5ejwkqgwx7v5z5gy):
+  jest-preset-angular@14.0.3(706f2d62191d92ffccf5bdc594edaaed):
     dependencies:
-      '@angular-devkit/build-angular': 15.2.10(@angular/compiler-cli@15.2.10(@angular/compiler@15.2.10(@angular/core@15.2.10(rxjs@7.5.7)(zone.js@0.11.5)))(typescript@4.9.5))(@angular/platform-server@15.2.10(ilc5b3yotbseevm3xgvvpgxpgm))(ng-packagr@15.2.2(@angular/compiler-cli@15.2.10(@angular/compiler@15.2.10(@angular/core@15.2.10(rxjs@7.5.7)(zone.js@0.11.5)))(typescript@4.9.5))(tslib@2.5.0)(typescript@4.9.5))(typescript@4.9.5)
+      '@angular-devkit/build-angular': 15.2.10(@angular/compiler-cli@15.2.10(@angular/compiler@15.2.10(@angular/core@15.2.10(rxjs@7.5.7)(zone.js@0.11.5)))(typescript@4.9.5))(@angular/platform-server@15.2.10(597020a0fe8c1c77567a7c05da2eed63))(ng-packagr@15.2.2(@angular/compiler-cli@15.2.10(@angular/compiler@15.2.10(@angular/core@15.2.10(rxjs@7.5.7)(zone.js@0.11.5)))(typescript@4.9.5))(tslib@2.5.0)(typescript@4.9.5))(typescript@4.9.5)
       '@angular/compiler-cli': 15.2.10(@angular/compiler@15.2.10(@angular/core@15.2.10(rxjs@7.5.7)(zone.js@0.11.5)))(typescript@4.9.5)
       '@angular/core': 15.2.10(rxjs@7.5.7)(zone.js@0.11.5)
       '@angular/platform-browser-dynamic': 15.2.10(@angular/common@15.2.10(@angular/core@15.2.10(rxjs@7.5.7)(zone.js@0.11.5))(rxjs@7.5.7))(@angular/compiler@15.2.10(@angular/core@15.2.10(rxjs@7.5.7)(zone.js@0.11.5)))(@angular/core@15.2.10(rxjs@7.5.7)(zone.js@0.11.5))(@angular/platform-browser@15.2.10(@angular/animations@15.2.10(@angular/core@15.2.10(rxjs@7.5.7)(zone.js@0.11.5)))(@angular/common@15.2.10(@angular/core@15.2.10(rxjs@7.5.7)(zone.js@0.11.5))(rxjs@7.5.7))(@angular/core@15.2.10(rxjs@7.5.7)(zone.js@0.11.5)))
@@ -11285,7 +11174,7 @@ snapshots:
       jest-environment-jsdom: 29.7.0
       jest-util: 29.7.0
       pretty-format: 29.7.0
-      ts-jest: 29.1.2(@babel/core@7.24.0)(@jest/types@29.6.3)(babel-jest@29.7.0(@babel/core@7.24.0))(esbuild@0.17.19)(jest@29.7.0(@types/node@12.20.52)(ts-node@10.9.1(@types/node@12.20.52)(typescript@4.9.5)))(typescript@4.9.5)
+      ts-jest: 29.1.2(@babel/core@7.20.12)(@jest/types@29.6.3)(babel-jest@29.7.0(@babel/core@7.20.12))(esbuild@0.17.19)(jest@29.7.0(@types/node@12.20.52)(ts-node@10.9.1(@types/node@12.20.52)(typescript@4.9.5)))(typescript@4.9.5)
       typescript: 4.9.5
     optionalDependencies:
       esbuild: 0.17.19
@@ -11457,10 +11346,6 @@ snapshots:
     dependencies:
       argparse: 1.0.10
       esprima: 4.0.1
-
-  js-yaml@4.1.0:
-    dependencies:
-      argparse: 2.0.1
 
   js-yaml@4.1.1:
     dependencies:
@@ -13318,7 +13203,7 @@ snapshots:
     dependencies:
       typescript: 4.9.5
 
-  ts-jest@29.1.2(@babel/core@7.24.0)(@jest/types@29.6.3)(babel-jest@29.7.0(@babel/core@7.24.0))(esbuild@0.17.19)(jest@29.7.0(@types/node@12.20.52)(ts-node@10.9.1(@types/node@12.20.52)(typescript@4.9.5)))(typescript@4.9.5):
+  ts-jest@29.1.2(@babel/core@7.20.12)(@jest/types@29.6.3)(babel-jest@29.7.0(@babel/core@7.20.12))(esbuild@0.17.19)(jest@29.7.0(@types/node@12.20.52)(ts-node@10.9.1(@types/node@12.20.52)(typescript@4.9.5)))(typescript@4.9.5):
     dependencies:
       bs-logger: 0.2.6
       fast-json-stable-stringify: 2.1.0
@@ -13331,10 +13216,28 @@ snapshots:
       typescript: 4.9.5
       yargs-parser: 21.1.1
     optionalDependencies:
-      '@babel/core': 7.24.0
+      '@babel/core': 7.20.12
       '@jest/types': 29.6.3
-      babel-jest: 29.7.0(@babel/core@7.24.0)
+      babel-jest: 29.7.0(@babel/core@7.20.12)
       esbuild: 0.17.19
+
+  ts-node@10.9.1(@types/node@12.20.52)(typescript@4.9.5):
+    dependencies:
+      '@cspotcode/source-map-support': 0.8.1
+      '@tsconfig/node10': 1.0.9
+      '@tsconfig/node12': 1.0.11
+      '@tsconfig/node14': 1.0.3
+      '@tsconfig/node16': 1.0.3
+      '@types/node': 12.20.52
+      acorn: 8.7.1
+      acorn-walk: 8.2.0
+      arg: 4.1.3
+      create-require: 1.1.1
+      diff: 4.0.2
+      make-error: 1.3.6
+      typescript: 4.9.5
+      v8-compile-cache-lib: 3.0.1
+      yn: 3.1.1
 
   ts-node@10.9.1(@types/node@14.18.33)(typescript@4.9.5):
     dependencies:

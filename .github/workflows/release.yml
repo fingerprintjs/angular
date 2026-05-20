@@ -11,6 +11,7 @@ jobs:
     uses: fingerprintjs/dx-team-toolkit/.github/workflows/release-sdk-changesets.yml@v1
     with:
       appId: ${{ vars.APP_ID }}
+      runnerAppId: ${{ vars.RUNNER_APP_ID }}
       language: node
       language-version: 24
       prepare-command: pnpm build
@@ -19,3 +20,4 @@ jobs:
     secrets:
       APP_PRIVATE_KEY: ${{ secrets.APP_PRIVATE_KEY }}
       RUNNER_APP_PRIVATE_KEY: ${{ secrets.RUNNER_APP_PRIVATE_KEY }}
+      NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}

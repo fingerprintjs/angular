@@ -1,5 +1,5 @@
 import { Component } from '@angular/core'
-import { FingerprintService, Fingerprint } from '@fingerprintjs/fingerprintjs-pro-angular'
+import { FingerprintService, Fingerprint } from '@fingerprint/angular'
 
 @Component({
   selector: 'app-home',

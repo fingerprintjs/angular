@@ -13,11 +13,12 @@
 <a href="https://fingerprintjs.github.io/angular/coverage/">
  <img src="https://fingerprintjs.github.io/angular/coverage/badges.svg" alt="coverage">
 </a>
-<a href="https://www.npmjs.com/package/@fingerprintjs/fingerprintjs-pro-angular">
-  <img src="https://img.shields.io/npm/v/@fingerprintjs/fingerprintjs-pro-angular.svg" alt="Current NPM version">
+<a href="https://www.npmjs.com/package/@fingerprint/angular">
+  <img src="https://img.shields.io/npm/v/@fingerprint/angular.svg" alt="Current NPM version">
 </a>
-<a href="https://www.npmjs.com/package/@fingerprintjs/fingerprintjs-pro-angular">
-  <img src="https://img.shields.io/npm/dm/@fingerprintjs/fingerprintjs-pro-angular.svg" alt="Monthly downloads from NPM">
+<a href="https://www.npmjs.com/package/@fingerprint/angular">
+  <img src="https://img.shields.io/npm/dm/@fingerprint/angular.svg" alt="Monthly downloads from NPM">
+</a>
 <a href="https://opensource.org/licenses/MIT">
   <img src="https://img.shields.io/:license-mit-blue.svg" alt="MIT license">
 </a>
@@ -59,19 +60,19 @@ This package works with the commercial [Fingerprint platform](https://fingerprin
 Using [npm](https://npmjs.org):
 
 ```sh
-npm install @fingerprintjs/fingerprintjs-pro-angular
+npm install @fingerprint/angular
 ```
 
 Using [pnpm](https://pnpm.io/):
 
 ```sh
-pnpm add @fingerprintjs/fingerprintjs-pro-angular
+pnpm add @fingerprint/angular
 ```
 
 Using [yarn](https://yarnpkg.com):
 
 ```sh
-yarn add @fingerprintjs/fingerprintjs-pro-angular
+yarn add @fingerprint/angular
 ```
 
 ## Getting started
@@ -84,7 +85,7 @@ To get your API key and get started, see the [Quick Start guide in our documenta
 
 ```javascript
 import { NgModule } from '@angular/core'
-import { FingerprintModule, Fingerprint } from '@fingerprintjs/fingerprintjs-pro-angular'
+import { FingerprintModule, Fingerprint } from '@fingerprint/angular'
 
 @NgModule({
   declarations: [AppComponent],
@@ -108,7 +109,7 @@ export class AppModule {}
 
 ```typescript
 import { Component } from '@angular/core'
-import { FingerprintService } from '@fingerprintjs/fingerprintjs-pro-angular'
+import { FingerprintService } from '@fingerprint/angular'
 
 @Component({
   selector: 'app-home',
@@ -143,7 +144,7 @@ Associate your data with an identification event using the `linkedId` or `tag` p
 // ...
 
 import { Component } from '@angular/core'
-import { FingerprintService } from '@fingerprintjs/fingerprintjs-pro-angular'
+import { FingerprintService } from '@fingerprint/angular'
 
 @Component({
   selector: 'app-home',

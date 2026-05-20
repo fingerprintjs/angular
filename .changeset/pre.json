@@ -2,7 +2,7 @@
   "mode": "pre",
   "tag": "test",
   "initialVersions": {
-    "@fingerprintjs/fingerprintjs-pro-angular": "2.1.0"
+    "@fingerprint/angular": "2.1.0"
   },
   "changesets": []
 }
