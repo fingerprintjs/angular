@@ -153,6 +153,9 @@ importers:
       '@fingerprint/agent':
         specifier: ^4.0.0
         version: 4.0.3
+      tslib:
+        specifier: ^2.5.0
+        version: 2.6.2
     publishDirectory: ../../dist/fingerprintjs-pro-angular
 
 packages:
