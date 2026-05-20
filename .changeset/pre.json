@@ -4,5 +4,7 @@
   "initialVersions": {
     "@fingerprint/angular": "2.1.0"
   },
-  "changesets": []
+  "changesets": [
+    "free-goats-wait"
+  ]
 }
