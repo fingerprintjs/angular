@@ -5,9 +5,6 @@
     "@fingerprint/angular": "2.1.0"
   },
   "changesets": [
-    "a-tslib-dep",
-    "blue-melons-repeat",
-    "free-goats-wait",
-    "patch-fix-publish"
+    "free-goats-wait"
   ]
 }
