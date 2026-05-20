@@ -14,7 +14,7 @@ jobs:
       runnerAppId: ${{ vars.RUNNER_APP_ID }}
       language: node
       language-version: 24
-      prepare-command: pnpm build
+      prepare-command: pnpm generate:version && pnpm build
       version-command: pnpm changeset:version
       publish-command: pnpm changeset:publish
     secrets:
