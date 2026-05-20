@@ -1,5 +1,11 @@
 # @fingerprint/angular
 
+## 3.0.0-test.1
+
+### Patch Changes
+
+- Fix release pipeline to publish from `dist/fingerprintjs-pro-angular` instead of the source `projects/` directory. ([edeea86](https://github.com/fingerprintjs/angular/commit/edeea86a95235098612877910ba5ba8a74abf115))
+
 ## 3.0.0-test.0
 
 ### Major Changes
