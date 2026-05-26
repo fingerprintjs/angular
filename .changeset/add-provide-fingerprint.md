@@ -2,7 +2,7 @@
 '@fingerprint/angular': minor
 ---
 
-Add `provideFingerprint` function for standalone Angular applications (Angular 14+).
+Add `provideFingerprint` function for [standalone Angular applications](https://angular.dev/reference/migrations/standalone) (Angular 15+).
 
 This allows configuring the SDK without `NgModule` in `bootstrapApplication` or `ApplicationConfig`:
 
