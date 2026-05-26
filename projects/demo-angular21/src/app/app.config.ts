@@ -7,7 +7,7 @@ export const appConfig: ApplicationConfig = {
     provideBrowserGlobalErrorListeners(),
     provideFingerprint({
       startOptions: {
-        apiKey: environment.fingerprintJsProPublicKey,
+        apiKey: environment.fingerprintPublicKey,
         cache: {
           storage: 'localStorage',
           cachePrefix: 'demo_cache_',
