@@ -82,5 +82,8 @@
   },
   "workspaces": [
     "projects/*"
-  ]
+  ],
+  "pnpm": {
+    "onlyBuiltDependencies": ["@parcel/watcher", "esbuild", "lmdb", "msgpackr-extract"]
+  }
 }

@@ -1,0 +1,37 @@
+:host {
+  display: block;
+  border: 2px solid #777777;
+  padding: 12px 24px;
+  border-radius: 4px;
+}
+
+.result {
+  max-height: 400px;
+  overflow: scroll;
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  align-items: center;
+}
+
+.submitButton,
+.clearButton {
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.submitButton {
+  background-color: #FF5D22;
+  color: #fff;
+  border: none;
+}
+
+.clearButton {
+  border: 2px solid rgba(0, 0, 0, 0.1);
+}
