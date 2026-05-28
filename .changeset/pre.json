@@ -2,10 +2,12 @@
   "mode": "pre",
   "tag": "test",
   "initialVersions": {
-    "@fingerprint/angular": "2.1.0"
+    "@fingerprint/angular": "2.1.0",
+    "demo-angular21": "0.0.0"
   },
   "changesets": [
     "a-tslib-dep",
+    "add-provide-fingerprint",
     "blue-melons-repeat",
     "free-goats-wait",
     "patch-fix-publish"
