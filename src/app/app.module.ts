@@ -13,7 +13,7 @@ import { PreloadedComponent } from './preloaded/preloaded.component'
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     FingerprintModule.forRoot({
       startOptions: {
-        apiKey: environment.fingerprintJsProPublicKey,
+        apiKey: environment.fingerprintPublicKey,
         cache: {
           storage: 'localStorage',
           cachePrefix: 'demo_cache_',
