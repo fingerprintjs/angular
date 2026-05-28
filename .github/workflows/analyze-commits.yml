@@ -11,6 +11,7 @@ jobs:
     uses: fingerprintjs/dx-team-toolkit/.github/workflows/analyze-commits.yml@v1
     with:
       previewNotes: false
+      nodeVersion: '22'
 
   preview-changeset:
     name: Preview changeset
