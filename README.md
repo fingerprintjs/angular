@@ -244,7 +244,7 @@ This repository contains an example Angular application. To run the demo locally
 
 1. Clone the repository with `git clone git@github.com:fingerprintjs/angular.git`.
 2. Inside the root folder, run `pnpm install` to install the dependencies.
-3. Create a dev environment file with `cp src/environments/environment.ts src/environments/environment.dev.ts`, and inside, replace `FingerprintJS Pro public key` with your actual public key.
+3. Create a dev environment file with `cp src/environments/environment.ts src/environments/environment.dev.ts`, and inside, replace `Fingerprint public key` with your actual public key.
 4. Run `pnpm generate:version` to create an SDK version file.
 5. Run `pnpm start` to start the demo application. (The app will now use the internal library source directly).
 
