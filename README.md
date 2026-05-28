@@ -83,7 +83,7 @@ To get your API key and get started, see the [Quick Start guide in our documenta
 1. Add `FingerprintModule.forRoot()` to the imports sections in your root application module or providers array, and pass it the `startOptions` configuration object. You can specify multiple configuration options. Set a [region](https://dev.fingerprint.com/docs/regions) if you have chosen a non-global region during registration. Set `endpoints` if you are using [one of our proxy integrations to increase accuracy](https://dev.fingerprint.com/docs/protecting-the-javascript-agent-from-adblockers) and effectiveness of visitor identification.
    Read more about other [forRoot() parameters](#FingerprintModuleforroot-props) below.
 
-Standalone application example (Angular 17+):
+Standalone application example:
 ```javascript
 import {
   ApplicationConfig,
@@ -97,20 +97,18 @@ export const appConfig: ApplicationConfig = {
     provideBrowserGlobalErrorListeners(),
 
     // Add this block
-    importProvidersFrom(
-      FingerprintModule.forRoot({
-        startOptions: {
-          apiKey: '<PUBLIC_API_KEY>',
-          endpoints: ['https://metrics.yourwebsite.com'],
-          // region: "eu"
-        },
-      })
-    )
-  ]
+    provideFingerprint({
+      startOptions: {
+        apiKey: '<PUBLIC_API_KEY>',
+        endpoints: 'https://metrics.yourwebsite.com',
+        // region: 'eu',
+      },
+    }),
+  ],
 }
 ```
 
-NgModule application example (Angular 15/16):
+Legacy NgModule application example:
 
 ```javascript
 import { NgModule } from '@angular/core'
@@ -125,7 +123,7 @@ import { FingerprintModule, Fingerprint } from '@fingerprint/angular'
     FingerprintModule.forRoot({
       startOptions: {
         apiKey: '<PUBLIC_API_KEY>',
-        endpoints: ['https://metrics.yourwebsite.com'],
+        endpoints: 'https://metrics.yourwebsite.com',
         // region: "eu"
       },
     }),
