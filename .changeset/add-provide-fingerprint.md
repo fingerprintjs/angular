@@ -4,7 +4,7 @@
 
 Add `provideFingerprint` function for [standalone Angular applications](https://angular.dev/reference/migrations/standalone) (Angular 15+).
 
-This allows configuring the SDK without `NgModule` in `bootstrapApplication` or `ApplicationConfig`:
+This allows configuring the SDK without `NgModule`, using `bootstrapApplication` or `ApplicationConfig`:
 
 ```typescript
 import { provideFingerprint } from '@fingerprint/angular';
