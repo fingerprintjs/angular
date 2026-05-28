@@ -80,8 +80,35 @@ yarn add @fingerprint/angular
 To identify visitors, you'll need a Fingerprint Pro account (you can [sign up for free](https://dashboard.fingerprint.com/signup/)).
 To get your API key and get started, see the [Quick Start guide in our documentation](https://dev.fingerprint.com/docs/quick-start-guide).
 
-1. Add `FingerprintModule.forRoot()` to the imports sections in your root application module and pass it the `startOptions` configuration object. You can specify multiple configuration options. Set a [region](https://dev.fingerprint.com/docs/regions) if you have chosen a non-global region during registration. Set `endpoints` if you are using [one of our proxy integrations to increase accuracy](https://dev.fingerprint.com/docs/protecting-the-javascript-agent-from-adblockers) and effectiveness of visitor identification.
+1. Add `FingerprintModule.forRoot()` to the imports sections in your root application module or providers array, and pass it the `startOptions` configuration object. You can specify multiple configuration options. Set a [region](https://dev.fingerprint.com/docs/regions) if you have chosen a non-global region during registration. Set `endpoints` if you are using [one of our proxy integrations to increase accuracy](https://dev.fingerprint.com/docs/protecting-the-javascript-agent-from-adblockers) and effectiveness of visitor identification.
    Read more about other [forRoot() parameters](#FingerprintModuleforroot-props) below.
+
+Standalone application example:
+```javascript
+import {
+  ApplicationConfig,
+  importProvidersFrom,
+  provideBrowserGlobalErrorListeners,
+} from '@angular/core';
+import { FingerprintModule } from '@fingerprint/angular';
+
+export const appConfig: ApplicationConfig = {
+  providers: [
+    provideBrowserGlobalErrorListeners(),
+
+    // Add this block
+    provideFingerprint({
+      startOptions: {
+        apiKey: '<PUBLIC_API_KEY>',
+        endpoints: 'https://metrics.yourwebsite.com',
+        // region: 'eu',
+      },
+    }),
+  ],
+}
+```
+
+Legacy NgModule application example:
 
 ```javascript
 import { NgModule } from '@angular/core'
@@ -91,10 +118,12 @@ import { FingerprintModule, Fingerprint } from '@fingerprint/angular'
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+
+    // Add this block
     FingerprintModule.forRoot({
       startOptions: {
         apiKey: '<PUBLIC_API_KEY>',
-        endpoints: ['https://metrics.yourwebsite.com'],
+        endpoints: 'https://metrics.yourwebsite.com',
         // region: "eu"
       },
     }),
