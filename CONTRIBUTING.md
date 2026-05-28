@@ -8,6 +8,8 @@ The main branch is locked for the push action. For proposing changes, use the st
 
 ### Development playground
 
+Run `pnpm run generate:version` before interacting with the library.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.6.
 The root project is the demo app. You can find the library in `projects/ng-fingerprint-pro` folder.
 
