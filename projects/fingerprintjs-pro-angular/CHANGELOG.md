@@ -1,5 +1,23 @@
 # @fingerprint/angular
 
+## 3.0.0-test.4
+
+### Minor Changes
+
+- Add `provideFingerprint` function for [standalone Angular applications](https://angular.dev/reference/migrations/standalone) (Angular 15+).
+
+  This allows configuring the SDK without `NgModule`, using `bootstrapApplication` or `ApplicationConfig`:
+
+  ```typescript
+  import { provideFingerprint } from '@fingerprint/angular'
+
+  export const appConfig: ApplicationConfig = {
+    providers: [provideFingerprint({ startOptions: { apiKey: 'your-api-key' } })],
+  }
+  ```
+
+  `FingerprintModule.forRoot()` remains available for NgModule-based applications. ([fbf3eb8](https://github.com/fingerprintjs/angular/commit/fbf3eb8f3197b795398b68e9326f084a17cad053))
+
 ## 3.0.0-test.3
 
 ### Patch Changes
