@@ -81,7 +81,7 @@ To identify visitors, you'll need a Fingerprint Pro account (you can [sign up fo
 To get your API key and get started, see the [Quick Start guide in our documentation](https://docs.fingerprint.com/docs/quick-start-guide).
 
 1. Add `provideFingerprint` to your providers array (for standalone applications) or `FingerprintModule.forRoot()` to the imports section (for NgModule applications), and pass it the `startOptions` configuration object. You can specify multiple configuration options. Set a [region](https://docs.fingerprint.com/docs/regions) if you have chosen a non-global region during registration. Set `endpoints` if you are using [one of our proxy integrations to increase accuracy](https://docs.fingerprint.com/docs/protecting-the-javascript-agent-from-adblockers) and effectiveness of visitor identification.
-   Read more about other [forRoot() / provideFingerprint() parameters](#FingerprintModuleforroot-props) below.
+   Read more about other [forRoot() / provideFingerprint() parameters](#fingerprintmoduleforroot-props--providefingerprint-options) below.
 
 Standalone application example:
 ```javascript
