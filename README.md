@@ -29,9 +29,9 @@
   <img src="https://img.shields.io/badge/-Documentation-green" alt="Documentation">
 </a>
 
-# Fingerprint Pro Angular
+# Fingerprint Angular
 
-Fingerprint Pro Angular SDK is an easy way to integrate **[Fingerprint](https://fingerprint.com/)** into your Angular application. See the [`src` folder](https://github.com/fingerprintjs/angular/tree/main/src) for a full usage example.
+Fingerprint Angular SDK is an easy way to integrate **[Fingerprint](https://fingerprint.com/)** into your Angular application. See the [`src` folder](https://github.com/fingerprintjs/angular/tree/main/src) for a full usage example.
 
 This SDK supports v4 of the Fingerprint JavaScript agent. See the [v3 to v4 migration guide](https://docs.fingerprint.com/reference/migrating-from-v3-to-v4) for more information.
 
@@ -77,7 +77,7 @@ yarn add @fingerprint/angular
 
 ## Getting started
 
-To identify visitors, you'll need a Fingerprint Pro account (you can [sign up for free](https://dashboard.fingerprint.com/signup/)).
+To identify visitors, you'll need a Fingerprint account (you can [sign up for free](https://dashboard.fingerprint.com/signup/)).
 To get your API key and get started, see the [Quick Start guide in our documentation](https://docs.fingerprint.com/docs/quick-start-guide).
 
 1. Add `provideFingerprint` to your providers array (for standalone applications) or `FingerprintModule.forRoot()` to the imports section (for NgModule applications), and pass it the `startOptions` configuration object. You can specify multiple configuration options. Set a [region](https://docs.fingerprint.com/docs/regions) if you have chosen a non-global region during registration. Set `endpoints` if you are using [one of our proxy integrations to increase accuracy](https://docs.fingerprint.com/docs/protecting-the-javascript-agent-from-adblockers) and effectiveness of visitor identification.
@@ -247,7 +247,7 @@ export class HomeComponent {
 
 ## Caching strategy
 
-Fingerprint Pro usage is billed per API call. To avoid unnecessary API calls, it is a good practice to [cache identification results](https://docs.fingerprint.com/docs/caching-visitor-information). By default, the SDK does not use caching.
+Fingerprint usage is billed per API call. To avoid unnecessary API calls, it is a good practice to [cache identification results](https://docs.fingerprint.com/docs/caching-visitor-information). By default, the SDK does not use caching.
 
 - Specify `cache` on the `FingerprintModule.forRoot` props or `provideFingerprint` options to enable and configure caching.
 - For more details, see [Caching results](https://docs.fingerprint.com/docs/caching-visitor-information).
@@ -257,17 +257,17 @@ Fingerprint Pro usage is billed per API call. To avoid unnecessary API calls, it
 
 ## Documentation
 
-This library uses Fingerprint Pro JavaScript Agent V4 under the hood. See our documentation for the full [JavaScript Agent API reference](https://docs.fingerprint.com/reference/js-agent-v4).
+This library uses Fingerprint JavaScript Agent V4 under the hood. See our documentation for the full [JavaScript Agent API reference](https://docs.fingerprint.com/reference/js-agent-v4).
 
 ### `FingerprintModule` and `provideFingerprint`
 
-The library provides two ways to initialize the Fingerprint Pro JS agent and provide `FingerprintService` to your application: `FingerprintModule` (for NgModule-based applications) and `provideFingerprint` (for standalone applications).
+The library provides two ways to initialize the Fingerprint JS agent and provide `FingerprintService` to your application: `FingerprintModule` (for NgModule-based applications) and `provideFingerprint` (for standalone applications).
 
 #### `FingerprintModule.forRoot` props / `provideFingerprint` options
 
 `{ startOptions: Fingerprint.StartOptions }`
 
-Options for the Fingerprint Pro JS agent. Options follow the [agent's initialization properties](https://docs.fingerprint.com/reference/js-agent-v4-start-function#start-options).
+Options for the Fingerprint JS agent. Options follow the [agent's initialization properties](https://docs.fingerprint.com/reference/js-agent-v4-start-function#start-options).
 
 | Property                 | Type                      | Required | Description                                                                       |
 |--------------------------|---------------------------|----------|-----------------------------------------------------------------------------------|
