@@ -198,7 +198,6 @@ Fingerprint Pro usage is billed per API call. To avoid unnecessary API calls, it
 - For more details, see [Caching results](https://docs.fingerprint.com/docs/caching-visitor-information).
 
 > [!NOTE]
-> If you use data from [`extendedResult`](https://docs.fingerprint.com/reference/get-function#extendedresult), pay additional attention to your caching strategy.
 > Some fields, for example, `ip` or `lastSeenAt`, might change over time for the same visitor. Use `getVisitorData({ ignoreCache: true })` to fetch the latest identification results.
 
 ## Documentation
