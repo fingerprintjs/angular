@@ -175,9 +175,9 @@ export class HomeComponent {
 }
 ```
 
-## Server-side rendering (SSR) with Angular Universal
+## Server-side rendering (SSR) with Angular SSR
 
-The library can be used with Angular Universal. Keep in mind that visitor identification is only possible in the browser, so your visitor identification code should only run client-side. See the example implementation for more details.
+The library can be used with Angular SSR. Keep in mind that visitor identification is only possible in the browser, so your visitor identification code should only run client-side. See the example implementation for more details.
 
 ## Linking and tagging information
 
