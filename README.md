@@ -31,7 +31,7 @@
 
 # Fingerprint Pro Angular
 
-Fingerprint Pro Angular SDK is an easy way to integrate **[Fingerprint](https://fingerprint.com/)** into your Angular application. See the [`src` folder](https://github.com/fingerprintjs/fingerprintjs-pro-angular/tree/main/src) for a full usage example.
+Fingerprint Pro Angular SDK is an easy way to integrate **[Fingerprint](https://fingerprint.com/)** into your Angular application. See the [`src` folder](https://github.com/fingerprintjs/angular/tree/main/src) for a full usage example.
 
 This SDK supports v4 of the Fingerprint JavaScript agent. See the [v3 to v4 migration guide](https://docs.fingerprint.com/reference/migrating-from-v3-to-v4) for more information.
 
@@ -49,7 +49,7 @@ This SDK supports v4 of the Fingerprint JavaScript agent. See the [v3 to v4 migr
 
 The following dependencies are required:
 
-- TypeScript >=4.6
+- TypeScript >=4.9
 - Node 16+
 - Angular 15+
 
@@ -78,25 +78,18 @@ yarn add @fingerprint/angular
 ## Getting started
 
 To identify visitors, you'll need a Fingerprint Pro account (you can [sign up for free](https://dashboard.fingerprint.com/signup/)).
-To get your API key and get started, see the [Quick Start guide in our documentation](https://dev.fingerprint.com/docs/quick-start-guide).
+To get your API key and get started, see the [Quick Start guide in our documentation](https://docs.fingerprint.com/docs/quick-start-guide).
 
-1. Add `FingerprintModule.forRoot()` to the imports sections in your root application module or providers array, and pass it the `startOptions` configuration object. You can specify multiple configuration options. Set a [region](https://dev.fingerprint.com/docs/regions) if you have chosen a non-global region during registration. Set `endpoints` if you are using [one of our proxy integrations to increase accuracy](https://dev.fingerprint.com/docs/protecting-the-javascript-agent-from-adblockers) and effectiveness of visitor identification.
-   Read more about other [forRoot() parameters](#FingerprintModuleforroot-props) below.
+1. Add `provideFingerprint` to your providers array (for standalone applications) or `FingerprintModule.forRoot()` to the imports section (for NgModule applications), and pass it the `startOptions` configuration object. You can specify multiple configuration options. Set a [region](https://docs.fingerprint.com/docs/regions) if you have chosen a non-global region during registration. Set `endpoints` if you are using [one of our proxy integrations to increase accuracy](https://docs.fingerprint.com/docs/protecting-the-javascript-agent-from-adblockers) and effectiveness of visitor identification.
+   Read more about other [forRoot() / provideFingerprint() parameters](#FingerprintModuleforroot-props) below.
 
 Standalone application example:
 ```javascript
-import {
-  ApplicationConfig,
-  importProvidersFrom,
-  provideBrowserGlobalErrorListeners,
-} from '@angular/core';
-import { FingerprintModule } from '@fingerprint/angular';
+import { ApplicationConfig } from '@angular/core';
+import { provideFingerprint } from '@fingerprint/angular';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideBrowserGlobalErrorListeners(),
-
-    // Add this block
     provideFingerprint({
       startOptions: {
         apiKey: '<PUBLIC_API_KEY>',
@@ -146,13 +139,13 @@ import { FingerprintService } from '@fingerprint/angular'
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {
-  constructor(private FingerprintService: FingerprintService) {}
+  constructor(private fingerprintService: FingerprintService) {}
   //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
   eventId = 'Press "Identify" button to get eventId'
 
   async onIdentifyButtonClick(): Promise<void> {
-    const data = await this.FingerprintService.getVisitorData()
+    const data = await this.fingerprintService.getVisitorData()
     //  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
     this.eventId = data.event_id
   }
@@ -165,7 +158,7 @@ The library can be used with Angular Universal. Keep in mind that visitor identi
 
 ## Linking and tagging information
 
-The `event_id` provided by Fingerprint Identification is especially useful when combined with information you already know about your users, for example, account IDs, order IDs, etc. To learn more about various applications of the `linkedId` and `tag`, see [Linking and tagging information](https://dev.fingerprint.com/docs/tagging-information).
+The `event_id` provided by Fingerprint Identification is especially useful when combined with information you already know about your users, for example, account IDs, order IDs, etc. To learn more about various applications of the `linkedId` and `tag`, see [Linking and tagging information](https://docs.fingerprint.com/docs/tagging-information).
 
 Associate your data with an identification event using the `linkedId` or `tag` parameter of the options object passed into the `getVisitorData()` method:
 
@@ -181,10 +174,10 @@ import { FingerprintService } from '@fingerprint/angular'
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {
-  constructor(private FingerprintService: FingerprintService) {}
+  constructor(private fingerprintService: FingerprintService) {}
 
   async onIdentifyButtonClick(): Promise<void> {
-    const data = await this.FingerprintService.getVisitorData({
+    const data = await this.fingerprintService.getVisitorData({
       linkedId: 'user_1234',
       tag: {
         userAction: 'login',
@@ -199,42 +192,77 @@ export class HomeComponent {
 
 ## Caching strategy
 
-Fingerprint Pro usage is billed per API call. To avoid unnecessary API calls, it is a good practice to [cache identification results](https://dev.fingerprint.com/docs/caching-visitor-information). By default, the SDK does not use caching.
+Fingerprint Pro usage is billed per API call. To avoid unnecessary API calls, it is a good practice to [cache identification results](https://docs.fingerprint.com/docs/caching-visitor-information). By default, the SDK does not use caching.
 
-- Specify `cache` on the `FingerprintModule.forRoot` props to enable and configure caching.
-- For more details, see [Caching results](https://dev.fingerprint.com/docs/caching-visitor-information).
+- Specify `cache` on the `FingerprintModule.forRoot` props or `provideFingerprint` options to enable and configure caching.
+- For more details, see [Caching results](https://docs.fingerprint.com/docs/caching-visitor-information).
 
 > [!NOTE]
-> If you use data from [`extendedResult`](https://dev.fingerprint.com/reference/get-function#extendedresult), pay additional attention to your caching strategy.
+> If you use data from [`extendedResult`](https://docs.fingerprint.com/reference/get-function#extendedresult), pay additional attention to your caching strategy.
 > Some fields, for example, `ip` or `lastSeenAt`, might change over time for the same visitor. Use `getVisitorData({ ignoreCache: true })` to fetch the latest identification results.
 
 ## Documentation
 
-This library uses Fingerprint Pro JavaScript agent under the hood. See our documentation for the full [JavaScript Agent API reference](https://dev.fingerprint.com/reference/javascript-agent).
+This library uses Fingerprint Pro JavaScript Agent V4 under the hood. See our documentation for the full [JavaScript Agent API reference](https://docs.fingerprint.com/reference/js-agent-v4).
 
-### `FingerprintModule`
+### `FingerprintModule` and `provideFingerprint`
 
-The module just initializes the Fingerprint Pro JS agent with start options and provides `FingerprintService` to DI.
+The library provides two ways to initialize the Fingerprint Pro JS agent and provide `FingerprintService` to your application: `FingerprintModule` (for NgModule-based applications) and `provideFingerprint` (for standalone applications).
 
-#### `FingerprintModule.forRoot` props
+#### `FingerprintModule.forRoot` props / `provideFingerprint` options
 
-`startOptions: Fingerprint.StartOptions`
+`{ startOptions: Fingerprint.StartOptions }`
 
-Options for the FingerprintJS JS Pro agent `start()` method. Options follow the [agent's initialization properties](https://dev.fingerprint.com/reference/javascript-agent#start-options).
+Options for the Fingerprint Pro JS agent. Options follow the [agent's initialization properties](https://docs.fingerprint.com/reference/js-agent-v4-start-function#start-options).
+
+| Property                 | Type                      | Required | Description                                                                       |
+|--------------------------|---------------------------|----------|-----------------------------------------------------------------------------------|
+| `apiKey`                 | `string`                  | Yes      | Your public API key.                                                              |
+| `region`                 | `string`                  | No       | The region where your data is stored. Can be `us`, `eu` or `ap`. Default is `us`. |
+| `endpoints`              | `Fingerprint.Endpoint`    | No       | Custom API endpoints.                                                             |
+| `storageKeyPrefix`       | `string`                  | No       | Custom prefix for storage keys (e.g. cookies). Default is `_vid_`.                |
+| `integrationInfo`        | `string[]`                | No       | Information about the integration.                                                |
+| `remoteControlDetection` | `boolean`                 | No       | Whether to enable remote control detection.                                       |
+| `urlHashing`             | `Fingerprint.UrlHashing`  | No       | Configuration for URL hashing.                                                    |
+| `cache`                  | `Fingerprint.CacheConfig` | No       | Configuration for caching.                                                        |
+
+#### `Fingerprint.Endpoint`
+
+An endpoint for a specific HTTPS request. Can be a single URL string, an array of strings, or wrapped with `withoutDefault(...)` to disable fallback.
+
+#### `Fingerprint.UrlHashing`
+
+Hashes URL parts before sending them to the Fingerprint server.
+
+| Property   | Type      | Required | Description                                                  |
+|------------|-----------|----------|--------------------------------------------------------------|
+| `path`     | `boolean` | No       | Set to `true` to hash the path part of the URL.              |
+| `query`    | `boolean` | No       | Set to `true` to hash the query part of the URL.             |
+| `fragment` | `boolean` | No       | Set to `true` to hash the fragment part of the URL.          |
+
+#### `Fingerprint.CacheConfig`
+
+Configuration for caching agent results.
+
+| Property      | Type                                      | Required | Description                                                                                                   |
+|---------------|-------------------------------------------|----------|---------------------------------------------------------------------------------------------------------------|
+| `storage`     | `sessionStorage`, `localStorage`, `agent` | Yes      | Where to store the cached results.                                                                            |
+| `duration`    | `optimize-cost`, `aggressive`, `number`   | Yes      | Caching strategy or duration in seconds. `optimize-cost` (default), `aggressive` or custom number of seconds. |
+| `cachePrefix` | `string`                                  | No       | Custom prefix for cache keys.                                                                                 |
 
 ### `FingerprintService` methods
 
-#### `getVisitorData(options?: GetOptions)`
+#### `getVisitorData(options?: Fingerprint.GetOptions): Promise<Fingerprint.GetResult>`
 
 This method performs identification requests with the FingerprintJS Pro API.
 
-- `options: GetOptions` parameter follows the parameters of the FingerprintJS Pro's [`get` function](https://dev.fingerprint.com/reference/javascript-agent#get-options).
+- `options: Fingerprint.GetOptions` parameter follows the parameters of the FingerprintJS Pro's [`get` function](https://docs.fingerprint.com/reference/js-agent-v4-get-function#get-options).
 
-#### `collectData(options?: GetOptions)`
-
-This method collects on demand fingerprint data.
-
-- `options: GetOptions` parameter follows the parameters of the FingerprintJS Pro's [`collect` function](https://dev.fingerprint.com/reference/javascript-agent#collect-options).
+| Property   | Type                   | Required | Description                                                                             |
+|------------|------------------------|----------|-----------------------------------------------------------------------------------------|
+| `timeout`  | `number`               | No       | Total time (in ms) allowed for the identification event. Default is `10000`.            |
+| `tag`      | `Fingerprint.TagValue` | No       | A user-provided value or object that will be returned back to you in a webhook message. |
+| `linkedId` | `string`               | No       | A way of linking current identification event with a custom identifier.                 |
 
 ## Demo application
 
