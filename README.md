@@ -49,7 +49,7 @@ This SDK supports v4 of the Fingerprint JavaScript agent. See the [v3 to v4 migr
 
 The following dependencies are required:
 
-- TypeScript >=4.9
+- TypeScript >=4.6
 - Node 16+
 - Angular 15+
 
