@@ -127,7 +127,32 @@ import { FingerprintModule, Fingerprint } from '@fingerprint/angular'
 export class AppModule {}
 ```
 
-2. Inject `FingerprintService` in your component's constructor. Now you can identify visitors using the `getVisitorData()` method.
+2. Inject `FingerprintService` in your component using `inject()`. Now you can identify visitors using the `getVisitorData()` method.
+
+Standalone application example (Angular 16+):
+
+```typescript
+import { Component, inject, signal } from '@angular/core'
+import { FingerprintService } from '@fingerprint/angular'
+
+@Component({
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrl: './home.component.css',
+})
+export class HomeComponent {
+  private fingerprintService = inject(FingerprintService)
+
+  eventId = signal('Press "Identify" button to get eventId')
+
+  async onIdentifyButtonClick(): Promise<void> {
+    const data = await this.fingerprintService.getVisitorData()
+    this.eventId.set(data.event_id)
+  }
+}
+```
+
+Legacy NgModule application example:
 
 ```typescript
 import { Component } from '@angular/core'
@@ -140,13 +165,11 @@ import { FingerprintService } from '@fingerprint/angular'
 })
 export class HomeComponent {
   constructor(private fingerprintService: FingerprintService) {}
-  //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
   eventId = 'Press "Identify" button to get eventId'
 
   async onIdentifyButtonClick(): Promise<void> {
     const data = await this.fingerprintService.getVisitorData()
-    //  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
     this.eventId = data.event_id
   }
 }
@@ -161,6 +184,38 @@ The library can be used with Angular Universal. Keep in mind that visitor identi
 The `event_id` provided by Fingerprint Identification is especially useful when combined with information you already know about your users, for example, account IDs, order IDs, etc. To learn more about various applications of the `linkedId` and `tag`, see [Linking and tagging information](https://docs.fingerprint.com/docs/tagging-information).
 
 Associate your data with an identification event using the `linkedId` or `tag` parameter of the options object passed into the `getVisitorData()` method:
+
+Standalone application example (Angular 16+):
+
+```ts
+// ...
+
+import { Component, inject } from '@angular/core'
+import { FingerprintService } from '@fingerprint/angular'
+
+@Component({
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrl: './home.component.css',
+})
+export class HomeComponent {
+  private fingerprintService = inject(FingerprintService)
+
+  async onIdentifyButtonClick(): Promise<void> {
+    const data = await this.fingerprintService.getVisitorData({
+      linkedId: 'user_1234',
+      tag: {
+        userAction: 'login',
+        analyticsId: 'UA-5555-1111-1',
+      },
+    })
+
+    // ...
+  }
+}
+```
+
+Legacy NgModule application example:
 
 ```ts
 // ...
