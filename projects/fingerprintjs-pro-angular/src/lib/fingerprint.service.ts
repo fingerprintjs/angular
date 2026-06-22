@@ -10,7 +10,7 @@ import { FINGERPRINT_ANGULAR_SETTINGS_TOKEN } from './tokens/fingerprint-angular
  *
  * @example ```typescript
  * import { Component, OnInit } from '@angular/core';
- * import { FingerprintService } from '@fingerprintjs/fingerprintjs-pro-angular';
+ * import { FingerprintService } from '@fingerprint/angular';
  *
  * @Component({
  *   selector: 'app-home',

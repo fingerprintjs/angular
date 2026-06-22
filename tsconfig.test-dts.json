@@ -12,7 +12,7 @@
     "noEmit": true,
     "isolatedModules": true,
     "paths": {
-      "@fingerprintjs/fingerprintjs-pro-angular": ["dist/fingerprintjs-pro-angular"]
+      "@fingerprint/angular": ["dist/fingerprintjs-pro-angular"]
     }
   },
   "include": [

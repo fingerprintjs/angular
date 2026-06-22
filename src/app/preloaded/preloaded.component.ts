@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { Fingerprint, FingerprintService } from '@fingerprintjs/fingerprintjs-pro-angular'
+import { Fingerprint, FingerprintService } from '@fingerprint/angular'
 
 @Component({
   selector: 'app-preloaded',

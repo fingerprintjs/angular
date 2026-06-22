@@ -7,7 +7,7 @@ import { FingerprintSettings } from './interfaces/fingerprint-settings'
  *
  * @example ```typescript
  * import { NgModule } from '@angular/core';
- * import { FingerprintModule } from '@fingerprintjs/fingerprintjs-pro-angular';
+ * import { FingerprintModule } from '@fingerprint/angular';
  * // ...
  *
  * @NgModule({
