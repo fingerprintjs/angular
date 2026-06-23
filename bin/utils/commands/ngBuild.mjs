@@ -1,5 +1,10 @@
 import { executeCommand } from '../command.mjs'
 
 export async function ngBuild(workspaceDir, log, project) {
-  return executeCommand('pnpm', ['exec', 'ng', 'build', project], { cwd: workspaceDir, env: { ...process.env } }, log)
+  return executeCommand(
+    './node_modules/.bin/ng',
+    ['build', project],
+    { cwd: workspaceDir, env: { ...process.env } },
+    log
+  )
 }

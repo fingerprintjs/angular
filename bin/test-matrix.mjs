@@ -9,6 +9,7 @@ import { jestRun } from './utils/commands/jestRun.mjs'
 import { copySourceFiles } from './utils/steps/copySourceFiles.mjs'
 import { updateTsConfigs } from './utils/steps/updateTsConfigs.mjs'
 import { installDependencies } from './utils/steps/installDependencies.mjs'
+import { setupDemoApp } from './utils/steps/setupDemoApp.mjs'
 import { setupLogDir } from './utils/setupLogDir.mjs'
 import { logErrorSummary } from './utils/logErrorSummary.mjs'
 
@@ -38,6 +39,7 @@ async function testVersion(version) {
 
     await ngNew(version, workspaceDir, log)
     await installDependencies(version, workspaceDir, log)
+    await setupDemoApp(workspaceDir, version, log)
     await copySourceFiles(workspaceDir)
     await updateTsConfigs(workspaceDir, version)
     await ngBuild(workspaceDir, log, LIB_NAME)
