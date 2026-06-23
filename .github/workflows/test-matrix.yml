@@ -40,6 +40,9 @@ jobs:
         with:
           version: 8
 
+      - name: Install dependencies
+        run: pnpm install
+
       - name: Generate project version
         run: pnpm generate:version
 
@@ -50,86 +53,4 @@ jobs:
           echo "LIB_NAME=fingerprintjs-pro-angular" >> $GITHUB_ENV
 
       - name: Run tests for Angular ${{ matrix.angular-version }}
-        shell: bash
-        run: |
-          VERSION=${{ matrix.angular-version }}
-          LIB_NAME="fingerprintjs-pro-angular"
-
-          SOURCE_PROJECT_DIR="$(pwd)/projects/$LIB_NAME"
-          SOURCE_LIB_DIR="$SOURCE_PROJECT_DIR/src/lib"
-          SOURCE_PUBLIC_API="$SOURCE_PROJECT_DIR/src/public-api.ts"
-          SOURCE_TEST_TS="$(pwd)/test.ts"
-          SOURCE_JEST_CONFIG="$(pwd)/jest.config.js"
-          SOURCE_ROOT_TSCONFIG="$(pwd)/tsconfig.json"
-          SOURCE_ROOT_TSCONFIG_SPEC="$(pwd)/tsconfig.spec.json"
-
-          # Cross-platform sedi (though GHA is linux, keeping it for compatibility)
-          sedi() {
-            sed -i "$@"
-          }
-
-          TEMP_DIR=$(mktemp -d)
-          cd "$TEMP_DIR"
-
-          echo "Creating new Angular workspace for version $VERSION..."
-          npx -y @angular/cli@$VERSION new test-workspace --create-application=false --skip-git --skip-install --defaults --package-manager=pnpm
-          cd test-workspace
-
-          pnpm install --config.fund=false
-          pnpm exec ng generate library "$LIB_NAME" --skip-install
-          pnpm install --config.fund=false --config.strict-peer-dependencies=false --no-frozen-lockfile
-          pnpm add @fingerprint/agent --config.fund=false --config.strict-peer-dependencies=false
-          pnpm add @angular/platform-browser-dynamic@$VERSION zone.js --config.fund=false --config.strict-peer-dependencies=false
-          pnpm add -D jest jest-preset-angular jest-environment-jsdom @types/jest @types/node --config.fund=false --config.strict-peer-dependencies=false
-
-          rm -rf projects/"$LIB_NAME"/src/lib/*
-          cp -r "$SOURCE_LIB_DIR/"* projects/"$LIB_NAME"/src/lib/
-          cp "$SOURCE_PUBLIC_API" projects/"$LIB_NAME"/src/public-api.ts
-
-          [ -f "$SOURCE_TEST_TS" ] && cp "$SOURCE_TEST_TS" test.ts
-          [ -f "$SOURCE_JEST_CONFIG" ] && cp "$SOURCE_JEST_CONFIG" jest.config.js
-          [ -f "$SOURCE_ROOT_TSCONFIG" ] && cp "$SOURCE_ROOT_TSCONFIG" tsconfig.json
-          [ -f "$SOURCE_ROOT_TSCONFIG_SPEC" ] && cp "$SOURCE_ROOT_TSCONFIG_SPEC" tsconfig.spec.json
-
-          if [ ! -f "tsconfig.spec.json" ]; then
-            echo '{"extends": "./tsconfig.json", "compilerOptions": {"types": ["jest", "node"]}}' > tsconfig.spec.json
-          fi
-
-          cp "$SOURCE_PROJECT_DIR/ng-package.json" projects/"$LIB_NAME"/
-          cp "$SOURCE_PROJECT_DIR/package.json" projects/"$LIB_NAME"/
-          cp "$SOURCE_PROJECT_DIR/tsconfig.lib.json" projects/"$LIB_NAME"/
-          cp "$SOURCE_PROJECT_DIR/tsconfig.lib.prod.json" projects/"$LIB_NAME"/
-          cp "$SOURCE_PROJECT_DIR/tsconfig.spec.json" projects/"$LIB_NAME"/
-
-          for FILE in "tsconfig.json" "tsconfig.base.json" "projects/$LIB_NAME/tsconfig.spec.json"; do
-            if [ -f "$FILE" ]; then
-              sedi '/"types":/d' "$FILE"
-              sedi '/"esModuleInterop":/d' "$FILE"
-              sedi '/"allowSyntheticDefaultImports":/d' "$FILE"
-              sedi '/"skipLibCheck":/d' "$FILE"
-              sedi 's/"compilerOptions":\s*{/"compilerOptions": { "types": ["node", "jest"], "esModuleInterop": true, "allowSyntheticDefaultImports": true, "skipLibCheck": true,/g' "$FILE"
-            fi
-          done
-
-          find . -name "tsconfig.spec.json" -exec bash -c 'sed -i "s/\"types\":\s*\[/\"types\": [\"node\", \"jest\", /g" "$1"' _ {} \;
-          find . -name "tsconfig.spec.json" -exec bash -c 'sed -i "s/\"compilerOptions\":\s*{/\"compilerOptions\": { \"types\": [\"node\", \"jest\"], \"esModuleInterop\": true, \"allowSyntheticDefaultImports\": true, \"skipLibCheck\": true,/g" "$1"' _ {} \;
-
-          if [ -f "projects/$LIB_NAME/tsconfig.spec.json" ]; then
-            if [ ! -f "../../tsconfig.json" ] && [ -f "../../tsconfig.base.json" ]; then
-              sedi 's/"extends": "..\/..\/tsconfig.json"/"extends": "..\/..\/tsconfig.base.json"/g' projects/"$LIB_NAME"/tsconfig.spec.json
-            fi
-          fi
-
-          find projects/"$LIB_NAME" -name "*.spec.ts" -exec bash -c 'sed -i "1s|^|/// <reference types=\"node\" />\n|" "$1"' _ {} \;
-
-          if [ "$VERSION" -ge "21" ]; then
-            sedi 's/"moduleResolution": "node"/"moduleResolution": "bundler"/g' tsconfig.json
-            [ -f "tsconfig.base.json" ] && sedi 's/"moduleResolution": "node"/"moduleResolution": "bundler"/g' tsconfig.base.json
-            [ -f "projects/$LIB_NAME/tsconfig.lib.json" ] && sedi 's/"moduleResolution": "node"/"moduleResolution": "bundler"/g' projects/"$LIB_NAME"/tsconfig.lib.json
-          fi
-
-          echo "Building library..."
-          pnpm exec ng build "$LIB_NAME"
-
-          echo "Running tests..."
-          pnpm exec jest
+        run: pnpm run test:matrix -- --version=${{ matrix.angular-version }}
