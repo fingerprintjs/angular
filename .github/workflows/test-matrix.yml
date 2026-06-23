@@ -1,0 +1,97 @@
+name: Test Angular Matrix
+
+on:
+  pull_request:
+
+# Verifies the library builds and its unit tests pass against every supported
+# Angular major. Instead of scaffolding a fresh workspace per version, we keep
+# the committed workspace (angular.json, tsconfig*, jest config) and just swap
+# the installed Angular toolchain. The only per-version knowledge that lives
+# here is the compatibility map below (Node / TypeScript / zone.js /
+# jest-preset-angular), which is intrinsic to Angular's own support policy.
+jobs:
+  test-matrix:
+    name: Angular ${{ matrix.angular }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - angular: 15
+            node: 18
+            typescript: '~4.9.5'
+            zone: '~0.11.4'
+            jpa: '^13.1.4'
+          - angular: 16
+            node: 18
+            typescript: '~5.1.6'
+            zone: '~0.13.3'
+            jpa: '^13.1.4'
+          - angular: 17
+            node: 18
+            typescript: '~5.2.2'
+            zone: '~0.14.4'
+            jpa: '^14.1.1'
+          - angular: 18
+            node: 20
+            typescript: '~5.4.5'
+            zone: '~0.14.4'
+            jpa: '^14.1.1'
+          - angular: 19
+            node: 20
+            typescript: '~5.6.3'
+            zone: '~0.15.0'
+            jpa: '^14.4.2'
+          - angular: 20
+            node: 20
+            typescript: '~5.8.3'
+            zone: '~0.15.0'
+            jpa: '^14.6.0'
+          - angular: 21
+            node: 22
+            typescript: '~5.9.2'
+            zone: '~0.16.0'
+            jpa: '^15.0.0'
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 8
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: pnpm
+
+      - name: Pin Angular ${{ matrix.angular }} toolchain
+        run: |
+          pnpm add -D \
+            @angular/cli@${{ matrix.angular }} \
+            @angular/compiler-cli@${{ matrix.angular }} \
+            @angular-devkit/build-angular@${{ matrix.angular }} \
+            ng-packagr@${{ matrix.angular }} \
+            typescript@${{ matrix.typescript }} \
+            jest-preset-angular@${{ matrix.jpa }} \
+            --config.strict-peer-dependencies=false --no-frozen-lockfile
+          pnpm add \
+            @angular/animations@${{ matrix.angular }} \
+            @angular/common@${{ matrix.angular }} \
+            @angular/compiler@${{ matrix.angular }} \
+            @angular/core@${{ matrix.angular }} \
+            @angular/forms@${{ matrix.angular }} \
+            @angular/platform-browser@${{ matrix.angular }} \
+            @angular/platform-browser-dynamic@${{ matrix.angular }} \
+            @angular/router@${{ matrix.angular }} \
+            zone.js@${{ matrix.zone }} \
+            --config.strict-peer-dependencies=false --no-frozen-lockfile
+
+      - name: Generate project version
+        run: pnpm generate:version
+
+      - name: Build library against Angular ${{ matrix.angular }}
+        run: pnpm exec ng build fingerprintjs-pro-angular
+
+      - name: Run unit tests against Angular ${{ matrix.angular }}
+        run: pnpm test
