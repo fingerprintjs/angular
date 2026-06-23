@@ -21,7 +21,6 @@ async function testVersion(version) {
   const logFile = joinPath(LOG_DIR, `angular-${version}.log`)
   const logStream = createWriteStream(logFile)
 
-  // Node version check for Angular 20+
   if (parseInt(version) >= 20) {
     const nodeVersion = process.versions.node
     const [major, minor] = nodeVersion.split('.').map(Number)

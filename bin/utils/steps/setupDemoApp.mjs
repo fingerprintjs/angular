@@ -29,8 +29,6 @@ export async function setupDemoApp(workspaceDir, version, log) {
     }
   } else {
     const appConfigPath = joinPath(appDir, 'app.config.ts')
-    // In some versions it might be in src/app/app.config.ts, in others it might be differently structured
-    // Angular 17+ usually has app.config.ts if standalone
     if (exists(appConfigPath)) {
       let content = readFile(appConfigPath)
       content = content.replace(
@@ -43,8 +41,6 @@ export async function setupDemoApp(workspaceDir, version, log) {
       )
       writeFile(appConfigPath, content)
     } else {
-      // Fallback or manual creation if it's Angular 16 standalone but didn't create app.config.ts
-      // Actually v16 might use main.ts for bootstrap if app.config doesn't exist
       const mainTsPath = joinPath(workspaceDir, 'projects', 'demo', 'src', 'main.ts')
       if (exists(mainTsPath)) {
         let content = readFile(mainTsPath)

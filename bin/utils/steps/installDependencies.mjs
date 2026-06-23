@@ -9,18 +9,21 @@ export async function installDependencies(version, workspaceDir, log) {
   await ngGenerate(workspaceDir, log, 'library', LIB_NAME, ['--skip-install'])
   await pnpmInstall(workspaceDir, log, ['--config.strict-peer-dependencies=false', '--no-frozen-lockfile'])
   await pnpmAdd(workspaceDir, log, ['@fingerprint/agent'], ['--config.strict-peer-dependencies=false'])
-  let zoneVersion = 'latest'
-  if (majorVersion >= 21) {
-    zoneVersion = '~0.16.0'
-  } else if (majorVersion >= 19) {
-    zoneVersion = '~0.15.0'
-  } else if (majorVersion >= 17) {
-    zoneVersion = '~0.14.0'
-  } else if (majorVersion >= 16) {
-    zoneVersion = '~0.13.0'
-  } else if (majorVersion >= 15) {
-    zoneVersion = '~0.11.4'
+
+  const zoneVersionMap = {
+    21: '~0.16.0',
+    19: '~0.15.0',
+    17: '~0.14.0',
+    16: '~0.13.0',
+    15: '~0.11.4',
   }
+
+  const zoneVersionKey = Object.keys(zoneVersionMap)
+    .map(Number)
+    .sort((a, b) => b - a)
+    .find((v) => majorVersion >= v)
+
+  const zoneVersion = zoneVersionKey ? zoneVersionMap[zoneVersionKey] : 'latest'
 
   await pnpmAdd(
     workspaceDir,
@@ -28,59 +31,35 @@ export async function installDependencies(version, workspaceDir, log) {
     [`@angular/platform-browser-dynamic@^${version}`, `zone.js@${zoneVersion}`],
     ['--config.strict-peer-dependencies=false']
   )
-  let jestPackages = []
+
   const builderPackages = [`ng-packagr@^${version}`]
 
-  if (majorVersion >= 21) {
-    jestPackages = [
+  const jestPackagesMap = {
+    21: [
       'jest@^30.0.0',
       'jest-preset-angular@^17.0.0',
       'jest-environment-jsdom@^30.0.0',
       '@types/jest@^29.5.0',
       '@types/node',
-    ]
-  } else if (majorVersion >= 20) {
-    jestPackages = [
+    ],
+    19: [
       'jest@^29.7.0',
       'jest-preset-angular@^14.6.0',
       'jest-environment-jsdom@^29.7.0',
       '@types/jest@^29.5.0',
       '@types/node',
-    ]
-  } else if (majorVersion >= 19) {
-    jestPackages = [
-      'jest@^29.7.0',
-      'jest-preset-angular@^14.6.0',
-      'jest-environment-jsdom@^29.7.0',
-      '@types/jest@^29.5.0',
-      '@types/node',
-    ]
-  } else if (majorVersion >= 18) {
-    jestPackages = [
-      'jest@^29.5.0',
-      'jest-preset-angular@^14.1.0',
-      'jest-environment-jsdom@^29.5.0',
-      '@types/jest',
-      '@types/node',
-    ]
-  } else if (majorVersion >= 16) {
-    jestPackages = [
-      'jest@^29.0.0',
-      'jest-preset-angular@^13.1.0',
-      'jest-environment-jsdom@^29.0.0',
-      '@types/jest',
-      '@types/node',
-    ]
-  } else {
-    // Angular 15
-    jestPackages = [
-      'jest@^28.0.0',
-      'jest-preset-angular@^12.2.0',
-      'jest-environment-jsdom@^28.0.0',
-      '@types/jest',
-      '@types/node',
-    ]
+    ],
+    18: ['jest@^29.5.0', 'jest-preset-angular@^14.1.0', 'jest-environment-jsdom@^29.5.0', '@types/jest', '@types/node'],
+    16: ['jest@^29.0.0', 'jest-preset-angular@^13.1.0', 'jest-environment-jsdom@^29.0.0', '@types/jest', '@types/node'],
+    0: ['jest@^28.0.0', 'jest-preset-angular@^12.2.0', 'jest-environment-jsdom@^28.0.0', '@types/jest', '@types/node'],
   }
+
+  const jestVersionKey = Object.keys(jestPackagesMap)
+    .map(Number)
+    .sort((a, b) => b - a)
+    .find((v) => majorVersion >= v)
+
+  const jestPackages = jestPackagesMap[jestVersionKey]
 
   await pnpmAdd(
     workspaceDir,
