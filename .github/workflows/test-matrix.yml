@@ -3,15 +3,15 @@ name: Test Angular Matrix
 on:
   pull_request:
 
-# Verifies the library builds and its unit tests pass against every supported
-# Angular major. Instead of scaffolding a fresh workspace per version, we keep
-# the committed workspace (angular.json, tsconfig*, jest config) and just swap
-# the installed Angular toolchain. The only per-version knowledge that lives
-# here is the compatibility map below (Node / TypeScript / zone.js /
-# jest-preset-angular), which is intrinsic to Angular's own support policy.
 jobs:
-  test-matrix:
-    name: Angular ${{ matrix.angular }}
+  # Library compatibility: build the library and run its unit tests against
+  # every supported Angular major. We keep the committed workspace (angular.json,
+  # tsconfig*, jest config) and just swap the installed Angular toolchain. The
+  # only per-version knowledge here is the compatibility map below (Node /
+  # TypeScript / zone.js / jest-preset-angular), intrinsic to Angular's own
+  # support policy.
+  unit-and-build:
+    name: Lib · Angular ${{ matrix.angular }}
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -95,3 +95,66 @@ jobs:
 
       - name: Run unit tests against Angular ${{ matrix.angular }}
         run: pnpm test
+
+  # Build the publishable package once. Angular Package Format output is partial-
+  # Ivy and portable, so a single build is consumable by every Angular version in
+  # the consumer matrix below.
+  build-package:
+    name: Build SDK package
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 8
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm generate:version
+      - run: pnpm exec ng build fingerprintjs-pro-angular
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sdk-dist
+          path: dist/fingerprintjs-pro-angular
+
+  # Consumer compatibility: compile a real, committed Angular application against
+  # the built SDK package. This catches breakage in a version's actual project
+  # config / consumer API surface that the library-only job above can miss.
+  # To cover another version, add projects/demo-angular<NN> and a matrix entry.
+  consumer-build:
+    name: App · ${{ matrix.demo }}
+    needs: build-package
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - demo: demo-angular21
+            node: 22
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 8
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: pnpm
+
+      - name: Download built SDK package
+        uses: actions/download-artifact@v4
+        with:
+          name: sdk-dist
+          path: dist/fingerprintjs-pro-angular
+
+      - name: Install ${{ matrix.demo }} dependencies
+        run: pnpm install --ignore-workspace
+        working-directory: projects/${{ matrix.demo }}
+
+      - name: Build ${{ matrix.demo }} against the SDK package
+        run: pnpm build
+        working-directory: projects/${{ matrix.demo }}
