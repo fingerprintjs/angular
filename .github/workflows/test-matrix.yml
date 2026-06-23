@@ -46,11 +46,5 @@ jobs:
       - name: Generate project version
         run: pnpm generate:version
 
-      - name: Setup environment variables
-        run: |
-          echo "CI=true" >> $GITHUB_ENV
-          echo "NG_CLI_ANALYTICS=false" >> $GITHUB_ENV
-          echo "LIB_NAME=fingerprintjs-pro-angular" >> $GITHUB_ENV
-
       - name: Run tests for Angular ${{ matrix.angular-version }}
         run: pnpm run test:matrix -- --version=${{ matrix.angular-version }}
