@@ -131,6 +131,8 @@ jobs:
       fail-fast: false
       matrix:
         include:
+          - demo: demo-angular15
+            node: 18
           - demo: demo-angular21
             node: 22
     steps:
