@@ -1,10 +1,9 @@
 import { Component } from '@angular/core'
-import { HomeComponent } from './home/home'
-import { PreloadedComponent } from './preloaded/preloaded'
+import { RouterOutlet, RouterLink } from '@angular/router'
 
 @Component({
   selector: 'app-root',
-  imports: [HomeComponent, PreloadedComponent],
+  imports: [RouterOutlet, RouterLink],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })

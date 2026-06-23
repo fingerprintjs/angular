@@ -1,4 +1,4 @@
-import { Component } from '@angular/core'
+import { Component, OnInit } from '@angular/core'
 import { FingerprintService, Fingerprint } from '@fingerprint/angular'
 
 @Component({
@@ -6,11 +6,15 @@ import { FingerprintService, Fingerprint } from '@fingerprint/angular'
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
   constructor(private FingerprintService: FingerprintService) {}
 
   eventId = 'Press "Identify" button to get eventId'
   result: Fingerprint.GetResult | null = null
+
+  ngOnInit(): void {
+    this.onClearCacheClick()
+  }
 
   get resultJSON() {
     return JSON.stringify(this.result, null, 2)

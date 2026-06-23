@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core'
+import { Component, inject, signal, OnInit } from '@angular/core'
 import { Fingerprint, FingerprintService } from '@fingerprint/angular'
 
 @Component({
@@ -6,11 +6,15 @@ import { Fingerprint, FingerprintService } from '@fingerprint/angular'
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
   private fingerprintService = inject(FingerprintService)
 
   eventId = signal('Press "Identify" button to get eventId')
   result = signal<Fingerprint.GetResult | null>(null)
+
+  ngOnInit(): void {
+    this.onClearCacheClick()
+  }
 
   get resultJSON() {
     return JSON.stringify(this.result(), null, 2)
