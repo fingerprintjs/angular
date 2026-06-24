@@ -1,12 +1,13 @@
-import { exists, joinPath, mkdir, readDir, unlink } from './fs.mjs'
+import fs from 'fs'
+import path from 'path'
 import { LOG_DIR } from './constants.mjs'
 
 export function setupLogDir() {
-  if (!exists(LOG_DIR)) {
-    mkdir(LOG_DIR)
+  if (!fs.existsSync(LOG_DIR)) {
+    fs.mkdirSync(LOG_DIR, { recursive: true })
   } else {
-    readDir(LOG_DIR).forEach((file) => {
-      unlink(joinPath(LOG_DIR, file))
+    fs.readdirSync(LOG_DIR).forEach((file) => {
+      fs.unlinkSync(path.join(LOG_DIR, file))
     })
   }
 }

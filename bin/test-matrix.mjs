@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 
-import { joinPath, mkdtemp, createWriteStream, rm } from './utils/fs.mjs'
+import fs from 'fs'
+import path from 'path'
+import os from 'os'
 import { PNPM_STORE_DIR, VERSIONS, LIB_NAME, LOG_DIR } from './utils/constants.mjs'
 import { ensurePnpm } from './utils/commands/ensurePnpm.mjs'
 import { ngNew } from './utils/commands/ngNew.mjs'
@@ -18,8 +20,8 @@ process.env.NG_CLI_ANALYTICS = 'false'
 process.env.PNPM_STORE_DIR = PNPM_STORE_DIR
 
 async function testVersion(version) {
-  const logFile = joinPath(LOG_DIR, `angular-${version}.log`)
-  const logStream = createWriteStream(logFile)
+  const logFile = path.join(LOG_DIR, `angular-${version}.log`)
+  const logStream = fs.createWriteStream(logFile)
 
   if (parseInt(version) >= 20) {
     const nodeVersion = process.versions.node
@@ -30,8 +32,8 @@ async function testVersion(version) {
     }
   }
 
-  const tempDir = mkdtemp('angular-test-')
-  const workspaceDir = joinPath(tempDir, 'test-workspace')
+  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'angular-test-'))
+  const workspaceDir = path.join(tempDir, 'test-workspace')
 
   try {
     const log = (data) => logStream.write(data)
@@ -51,7 +53,7 @@ async function testVersion(version) {
     return 1
   } finally {
     logStream.end()
-    rm(tempDir)
+    fs.rmSync(tempDir, { recursive: true, force: true })
   }
 }
 

@@ -1,5 +1,6 @@
+import fs from 'fs'
+import path from 'path'
 import { ngGenerate } from '../commands/ngGenerate.mjs'
-import { joinPath, exists, writeFile, readFile } from '../fs.mjs'
 
 export async function setupDemoApp(workspaceDir, version, log) {
   const isLegacy = parseInt(version) === 15
@@ -11,12 +12,12 @@ export async function setupDemoApp(workspaceDir, version, log) {
 
   await ngGenerate(workspaceDir, log, 'application', 'demo', options)
 
-  const appDir = joinPath(workspaceDir, 'projects', 'demo', 'src', 'app')
+  const appDir = path.join(workspaceDir, 'projects', 'demo', 'src', 'app')
 
   if (isLegacy) {
-    const appModulePath = joinPath(appDir, 'app.module.ts')
-    if (exists(appModulePath)) {
-      let content = readFile(appModulePath)
+    const appModulePath = path.join(appDir, 'app.module.ts')
+    if (fs.existsSync(appModulePath)) {
+      let content = fs.readFileSync(appModulePath, 'utf8')
       content = content.replace(
         "import { NgModule } from '@angular/core';",
         "import { NgModule } from '@angular/core';\nimport { FingerprintModule } from '@fingerprint/angular';"
@@ -25,12 +26,12 @@ export async function setupDemoApp(workspaceDir, version, log) {
         'imports: [',
         `imports: [\n    FingerprintModule.forRoot({ startOptions: { apiKey: 'test-key' } }),`
       )
-      writeFile(appModulePath, content)
+      fs.writeFileSync(appModulePath, content, 'utf8')
     }
   } else {
-    const appConfigPath = joinPath(appDir, 'app.config.ts')
-    if (exists(appConfigPath)) {
-      let content = readFile(appConfigPath)
+    const appConfigPath = path.join(appDir, 'app.config.ts')
+    if (fs.existsSync(appConfigPath)) {
+      let content = fs.readFileSync(appConfigPath, 'utf8')
       content = content.replace(
         "import { ApplicationConfig } from '@angular/core';",
         "import { ApplicationConfig } from '@angular/core';\nimport { provideFingerprint } from '@fingerprint/angular';"
@@ -39,11 +40,11 @@ export async function setupDemoApp(workspaceDir, version, log) {
         'providers: [',
         `providers: [\n    provideFingerprint({ startOptions: { apiKey: 'test-key' } }),`
       )
-      writeFile(appConfigPath, content)
+      fs.writeFileSync(appConfigPath, content, 'utf8')
     } else {
-      const mainTsPath = joinPath(workspaceDir, 'projects', 'demo', 'src', 'main.ts')
-      if (exists(mainTsPath)) {
-        let content = readFile(mainTsPath)
+      const mainTsPath = path.join(workspaceDir, 'projects', 'demo', 'src', 'main.ts')
+      if (fs.existsSync(mainTsPath)) {
+        let content = fs.readFileSync(mainTsPath, 'utf8')
         if (content.includes('bootstrapApplication')) {
           content = content.replace(
             "import { bootstrapApplication } from '@angular/platform-browser';",
@@ -53,7 +54,7 @@ export async function setupDemoApp(workspaceDir, version, log) {
             'providers: [',
             `providers: [\n    provideFingerprint({ startOptions: { apiKey: 'test-key' } }),`
           )
-          writeFile(mainTsPath, content)
+          fs.writeFileSync(mainTsPath, content, 'utf8')
         }
       }
     }

@@ -1,4 +1,4 @@
-import { readFile } from './fs.mjs'
+import fs from 'fs'
 
 export function logErrorSummary(logStream, logFile, err, version) {
   logStream.write(`\nError: ${err.message}\n`)
@@ -6,7 +6,7 @@ export function logErrorSummary(logStream, logFile, err, version) {
   console.log(`Log: ${logFile}`)
 
   try {
-    const logContent = readFile(logFile)
+    const logContent = fs.readFileSync(logFile, 'utf8')
     const lines = logContent.split('\n')
     console.log(lines.slice(-15).join('\n'))
   } catch (e) {

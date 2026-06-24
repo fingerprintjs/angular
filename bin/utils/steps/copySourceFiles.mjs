@@ -1,4 +1,6 @@
-import { copyRecursive, joinPath, exists, mkdir, copyFile, rm, writeFile } from '../fs.mjs'
+import path from 'path'
+import fs from 'fs'
+import { copyRecursive } from '../fs.mjs'
 import {
   LIB_NAME,
   SOURCE_PROJECT_DIR,
@@ -11,39 +13,39 @@ import {
 } from '../constants.mjs'
 
 export async function copySourceFiles(workspaceDir) {
-  const libDestDir = joinPath(workspaceDir, 'projects', LIB_NAME, 'src', 'lib')
-  if (exists(libDestDir)) {
-    rm(libDestDir)
+  const libDestDir = path.join(workspaceDir, 'projects', LIB_NAME, 'src', 'lib')
+  if (fs.existsSync(libDestDir)) {
+    fs.rmSync(libDestDir, { recursive: true, force: true })
   }
-  mkdir(libDestDir)
+  fs.mkdirSync(libDestDir, { recursive: true })
 
   copyRecursive(SOURCE_LIB_DIR, libDestDir)
-  copyFile(SOURCE_PUBLIC_API, joinPath(workspaceDir, 'projects', LIB_NAME, 'src', 'public-api.ts'))
+  fs.copyFileSync(SOURCE_PUBLIC_API, path.join(workspaceDir, 'projects', LIB_NAME, 'src', 'public-api.ts'))
 
-  if (exists(SOURCE_TEST_TS)) {
-    copyFile(SOURCE_TEST_TS, joinPath(workspaceDir, 'test.ts'))
+  if (fs.existsSync(SOURCE_TEST_TS)) {
+    fs.copyFileSync(SOURCE_TEST_TS, path.join(workspaceDir, 'test.ts'))
   }
-  if (exists(SOURCE_JEST_CONFIG)) {
-    copyFile(SOURCE_JEST_CONFIG, joinPath(workspaceDir, 'jest.config.js'))
+  if (fs.existsSync(SOURCE_JEST_CONFIG)) {
+    fs.copyFileSync(SOURCE_JEST_CONFIG, path.join(workspaceDir, 'jest.config.js'))
   }
-  if (exists(SOURCE_ROOT_TSCONFIG)) {
-    copyFile(SOURCE_ROOT_TSCONFIG, joinPath(workspaceDir, 'tsconfig.json'))
+  if (fs.existsSync(SOURCE_ROOT_TSCONFIG)) {
+    fs.copyFileSync(SOURCE_ROOT_TSCONFIG, path.join(workspaceDir, 'tsconfig.json'))
   }
-  if (exists(SOURCE_ROOT_TSCONFIG_SPEC)) {
-    copyFile(SOURCE_ROOT_TSCONFIG_SPEC, joinPath(workspaceDir, 'tsconfig.spec.json'))
+  if (fs.existsSync(SOURCE_ROOT_TSCONFIG_SPEC)) {
+    fs.copyFileSync(SOURCE_ROOT_TSCONFIG_SPEC, path.join(workspaceDir, 'tsconfig.spec.json'))
   }
 
-  if (!exists(joinPath(workspaceDir, 'tsconfig.spec.json'))) {
-    writeFile(
-      joinPath(workspaceDir, 'tsconfig.spec.json'),
+  if (!fs.existsSync(path.join(workspaceDir, 'tsconfig.spec.json'))) {
+    fs.writeFileSync(
+      path.join(workspaceDir, 'tsconfig.spec.json'),
       JSON.stringify({ extends: './tsconfig.json', compilerOptions: { types: ['jest', 'node'] } })
     )
   }
 
-  const projectDir = joinPath(workspaceDir, 'projects', LIB_NAME)
-  copyFile(joinPath(SOURCE_PROJECT_DIR, 'ng-package.json'), joinPath(projectDir, 'ng-package.json'))
-  copyFile(joinPath(SOURCE_PROJECT_DIR, 'package.json'), joinPath(projectDir, 'package.json'))
-  copyFile(joinPath(SOURCE_PROJECT_DIR, 'tsconfig.lib.json'), joinPath(projectDir, 'tsconfig.lib.json'))
-  copyFile(joinPath(SOURCE_PROJECT_DIR, 'tsconfig.lib.prod.json'), joinPath(projectDir, 'tsconfig.lib.prod.json'))
-  copyFile(joinPath(SOURCE_PROJECT_DIR, 'tsconfig.spec.json'), joinPath(projectDir, 'tsconfig.spec.json'))
+  const projectDir = path.join(workspaceDir, 'projects', LIB_NAME)
+  fs.copyFileSync(path.join(SOURCE_PROJECT_DIR, 'ng-package.json'), path.join(projectDir, 'ng-package.json'))
+  fs.copyFileSync(path.join(SOURCE_PROJECT_DIR, 'package.json'), path.join(projectDir, 'package.json'))
+  fs.copyFileSync(path.join(SOURCE_PROJECT_DIR, 'tsconfig.lib.json'), path.join(projectDir, 'tsconfig.lib.json'))
+  fs.copyFileSync(path.join(SOURCE_PROJECT_DIR, 'tsconfig.lib.prod.json'), path.join(projectDir, 'tsconfig.lib.prod.json'))
+  fs.copyFileSync(path.join(SOURCE_PROJECT_DIR, 'tsconfig.spec.json'), path.join(projectDir, 'tsconfig.spec.json'))
 }

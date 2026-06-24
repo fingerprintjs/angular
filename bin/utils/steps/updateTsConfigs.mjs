@@ -1,15 +1,17 @@
-import { updateJsonFile, joinPath, exists, readDir, readFile, writeFile, stat } from '../fs.mjs'
+import fs from 'fs'
+import path from 'path'
+import { updateJsonFile } from '../fs.mjs'
 import { LIB_NAME } from '../constants.mjs'
 
 export async function updateTsConfigs(workspaceDir, version) {
   const tsconfigFiles = [
-    joinPath(workspaceDir, 'tsconfig.json'),
-    joinPath(workspaceDir, 'tsconfig.base.json'),
-    joinPath(workspaceDir, 'projects', LIB_NAME, 'tsconfig.spec.json'),
+    path.join(workspaceDir, 'tsconfig.json'),
+    path.join(workspaceDir, 'tsconfig.base.json'),
+    path.join(workspaceDir, 'projects', LIB_NAME, 'tsconfig.spec.json'),
   ]
 
   for (const file of tsconfigFiles) {
-    if (exists(file)) {
+    if (fs.existsSync(file)) {
       updateJsonFile(file, (json) => {
         if (!json.compilerOptions) {
           json.compilerOptions = {}
@@ -24,9 +26,9 @@ export async function updateTsConfigs(workspaceDir, version) {
 
   const allSpecTsconfigs = []
   const findSpecConfigs = (dir) => {
-    readDir(dir).forEach((file) => {
-      const fullPath = joinPath(dir, file)
-      if (exists(fullPath) && stat(fullPath).isDirectory()) {
+    fs.readdirSync(dir).forEach((file) => {
+      const fullPath = path.join(dir, file)
+      if (fs.existsSync(fullPath) && fs.statSync(fullPath).isDirectory()) {
         if (file !== 'node_modules') {
           findSpecConfigs(fullPath)
         }
@@ -58,38 +60,38 @@ export async function updateTsConfigs(workspaceDir, version) {
     })
   }
 
-  if (exists(joinPath(workspaceDir, 'projects', LIB_NAME, 'tsconfig.spec.json'))) {
-    if (!exists(joinPath(workspaceDir, 'tsconfig.json')) && exists(joinPath(workspaceDir, 'tsconfig.base.json'))) {
-      updateJsonFile(joinPath(workspaceDir, 'projects', LIB_NAME, 'tsconfig.spec.json'), (json) => {
+  if (fs.existsSync(path.join(workspaceDir, 'projects', LIB_NAME, 'tsconfig.spec.json'))) {
+    if (!fs.existsSync(path.join(workspaceDir, 'tsconfig.json')) && fs.existsSync(path.join(workspaceDir, 'tsconfig.base.json'))) {
+      updateJsonFile(path.join(workspaceDir, 'projects', LIB_NAME, 'tsconfig.spec.json'), (json) => {
         json.extends = '../../tsconfig.base.json'
       })
     }
   }
 
   const addNodeReference = (dir) => {
-    readDir(dir).forEach((file) => {
-      const fullPath = joinPath(dir, file)
-      if (exists(fullPath) && stat(fullPath).isDirectory()) {
+    fs.readdirSync(dir).forEach((file) => {
+      const fullPath = path.join(dir, file)
+      if (fs.existsSync(fullPath) && fs.statSync(fullPath).isDirectory()) {
         addNodeReference(fullPath)
       } else if (file.endsWith('.spec.ts')) {
-        let content = readFile(fullPath)
+        let content = fs.readFileSync(fullPath, 'utf8')
         if (!content.startsWith('/// <reference types="node" />')) {
           content = '/// <reference types="node" />\n' + content
-          writeFile(fullPath, content)
+          fs.writeFileSync(fullPath, content, 'utf8')
         }
       }
     })
   }
-  addNodeReference(joinPath(workspaceDir, 'projects', LIB_NAME))
+  addNodeReference(path.join(workspaceDir, 'projects', LIB_NAME))
 
   if (parseInt(version) >= 21) {
     const targetTsconfigs = [
-      joinPath(workspaceDir, 'tsconfig.json'),
-      joinPath(workspaceDir, 'tsconfig.base.json'),
-      joinPath(workspaceDir, 'projects', LIB_NAME, 'tsconfig.lib.json'),
+      path.join(workspaceDir, 'tsconfig.json'),
+      path.join(workspaceDir, 'tsconfig.base.json'),
+      path.join(workspaceDir, 'projects', LIB_NAME, 'tsconfig.lib.json'),
     ]
     for (const configPath of targetTsconfigs) {
-      if (exists(configPath)) {
+      if (fs.existsSync(configPath)) {
         updateJsonFile(configPath, (json) => {
           if (json.compilerOptions) {
             json.compilerOptions.moduleResolution = 'bundler'
