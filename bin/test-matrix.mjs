@@ -63,7 +63,7 @@ async function testVersion(version) {
       log
     )
 
-    const angularVersionTag = `v${version}-lts`
+    const angularVersionTag = version > 15 ? `v${version}-lts` : `^${version}`
 
     // 3. Install Peer Deps and Required Packages
     const packagesToInstall = [
