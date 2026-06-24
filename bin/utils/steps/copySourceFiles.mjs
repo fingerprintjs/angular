@@ -46,6 +46,9 @@ export async function copySourceFiles(workspaceDir) {
   fs.copyFileSync(path.join(SOURCE_PROJECT_DIR, 'ng-package.json'), path.join(projectDir, 'ng-package.json'))
   fs.copyFileSync(path.join(SOURCE_PROJECT_DIR, 'package.json'), path.join(projectDir, 'package.json'))
   fs.copyFileSync(path.join(SOURCE_PROJECT_DIR, 'tsconfig.lib.json'), path.join(projectDir, 'tsconfig.lib.json'))
-  fs.copyFileSync(path.join(SOURCE_PROJECT_DIR, 'tsconfig.lib.prod.json'), path.join(projectDir, 'tsconfig.lib.prod.json'))
+  fs.copyFileSync(
+    path.join(SOURCE_PROJECT_DIR, 'tsconfig.lib.prod.json'),
+    path.join(projectDir, 'tsconfig.lib.prod.json')
+  )
   fs.copyFileSync(path.join(SOURCE_PROJECT_DIR, 'tsconfig.spec.json'), path.join(projectDir, 'tsconfig.spec.json'))
 }

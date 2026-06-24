@@ -56,44 +56,40 @@ async function testVersion(version) {
   }
 }
 
-async function main() {
-  setupLogDir()
+setupLogDir()
 
-  const args = process.argv.slice(2)
-  const versionArgs = []
-  for (let i = 0; i < args.length; i++) {
-    if (args[i].startsWith('--version=')) {
-      versionArgs.push(args[i].split('=')[1])
-    } else if (args[i] === '--version' && i + 1 < args.length) {
-      versionArgs.push(args[++i])
-    }
-  }
-
-  const versionsToTest = versionArgs.length > 0 ? versionArgs : VERSIONS
-
-  console.log(`Starting tests for Angular versions: ${versionsToTest.join(', ')}`)
-  console.log(`Using pnpm store at: ${PNPM_STORE_DIR}`)
-  console.log(`Logs: ${LOG_DIR}`)
-  console.log('------------------------------------------------------------')
-
-  try {
-    ensurePnpm()
-  } catch (e) {
-    console.error(e)
-    process.exit(1)
-  }
-
-  const results = await Promise.all(versionsToTest.map((v) => testVersion(v)))
-  const failed = results.some((code) => code !== 0)
-
-  console.log('------------------------------------------------------------')
-  if (failed) {
-    console.log('CI Pipeline Failed')
-    process.exit(1)
-  } else {
-    console.log('Success: All Angular versions passed')
-    process.exit(0)
+const args = process.argv.slice(2)
+const versionArgs = []
+for (let i = 0; i < args.length; i++) {
+  if (args[i].startsWith('--version=')) {
+    versionArgs.push(args[i].split('=')[1])
+  } else if (args[i] === '--version' && i + 1 < args.length) {
+    versionArgs.push(args[++i])
   }
 }
 
-main()
+const versionsToTest = versionArgs.length > 0 ? versionArgs : VERSIONS
+
+console.log(`Starting tests for Angular versions: ${versionsToTest.join(', ')}`)
+console.log(`Using pnpm store at: ${PNPM_STORE_DIR}`)
+console.log(`Logs: ${LOG_DIR}`)
+console.log('------------------------------------------------------------')
+
+try {
+  ensurePnpm()
+} catch (e) {
+  console.error(e)
+  process.exit(1)
+}
+
+const results = await Promise.all(versionsToTest.map((v) => testVersion(v)))
+const failed = results.some((code) => code !== 0)
+
+console.log('------------------------------------------------------------')
+if (failed) {
+  console.log('CI Pipeline Failed')
+  process.exit(1)
+} else {
+  console.log('Success: All Angular versions passed')
+  process.exit(0)
+}

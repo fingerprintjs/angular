@@ -61,7 +61,10 @@ export async function updateTsConfigs(workspaceDir, version) {
   }
 
   if (fs.existsSync(path.join(workspaceDir, 'projects', LIB_NAME, 'tsconfig.spec.json'))) {
-    if (!fs.existsSync(path.join(workspaceDir, 'tsconfig.json')) && fs.existsSync(path.join(workspaceDir, 'tsconfig.base.json'))) {
+    if (
+      !fs.existsSync(path.join(workspaceDir, 'tsconfig.json')) &&
+      fs.existsSync(path.join(workspaceDir, 'tsconfig.base.json'))
+    ) {
       updateJsonFile(path.join(workspaceDir, 'projects', LIB_NAME, 'tsconfig.spec.json'), (json) => {
         json.extends = '../../tsconfig.base.json'
       })
