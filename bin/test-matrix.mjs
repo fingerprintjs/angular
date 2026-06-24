@@ -15,7 +15,6 @@ import { setupDemoApp } from './utils/steps/setupDemoApp.mjs'
 import { setupLogDir } from './utils/setupLogDir.mjs'
 import { logErrorSummary } from './utils/logErrorSummary.mjs'
 
-process.env.CI = 'true'
 process.env.NG_CLI_ANALYTICS = 'false'
 process.env.PNPM_STORE_DIR = PNPM_STORE_DIR
 
