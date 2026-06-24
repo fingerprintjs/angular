@@ -5,8 +5,7 @@ export function ensurePnpm() {
   try {
     exec('pnpm --version', { stdio: 'ignore' })
   } catch (e) {
-    console.log('pnpm not found, installing...')
-    exec('npm install -g pnpm', { stdio: 'inherit' })
+    throw new Error('pnpm not found')
   }
   exec(`pnpm config set store-dir "${PNPM_STORE_DIR}"`, { stdio: 'inherit' })
 }

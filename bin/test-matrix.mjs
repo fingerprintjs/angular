@@ -77,7 +77,12 @@ async function main() {
   console.log(`Logs: ${LOG_DIR}`)
   console.log('------------------------------------------------------------')
 
-  ensurePnpm()
+  try {
+    ensurePnpm()
+  } catch (e) {
+    console.error(e)
+    process.exit(1)
+  }
 
   const results = await Promise.all(versionsToTest.map((v) => testVersion(v)))
   const failed = results.some((code) => code !== 0)
