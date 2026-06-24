@@ -32,7 +32,6 @@ async function testVersion(version) {
     log(`Angular ${version}: Starting check...\n`)
     console.log(`Angular ${version}: Starting check...`)
 
-    // 1. Create Workspace
     await executeCommand(
       'npx',
       [
@@ -50,12 +49,6 @@ async function testVersion(version) {
       log
     )
 
-    // Ensure npx worked and we have node_modules in the workspace after next steps
-    // Actually, step 1 just creates the folder structure.
-    // We need to install @angular/cli locally in the temp workspace to use it via ./node_modules/.bin/ng
-    // OR we use npx again for generate.
-
-    // 2. Generate Library
     await executeCommand(
       'npx',
       ['-y', `@angular/cli@${version}`, 'generate', 'library', LIB_NAME, '--skip-install'],
@@ -65,7 +58,6 @@ async function testVersion(version) {
 
     const angularVersionTag = version > 15 ? `v${version}-lts` : `^${version}`
 
-    // 3. Install Peer Deps and Required Packages
     const packagesToInstall = [
       `@angular/animations@${angularVersionTag}`,
       `@angular/common@${angularVersionTag}`,
@@ -97,7 +89,6 @@ async function testVersion(version) {
 
     const commonOptions = ['--config.strict-peer-dependencies=false', '--no-lockfile', '--config.fund=false']
 
-    // We install everything in one go to avoid version mismatches and repeat installations
     await executeCommand(
       'pnpm',
       ['add', ...packagesToInstall, ...devPackagesToInstall, ...commonOptions],
@@ -105,7 +96,6 @@ async function testVersion(version) {
       log
     )
 
-    // 4. Copy Source Files
     const libDestDir = path.join(workspaceDir, 'projects', LIB_NAME, 'src', 'lib')
     fs.mkdirSync(libDestDir, { recursive: true })
     copyRecursive(path.join(process.cwd(), 'projects', LIB_NAME, 'src', 'lib'), libDestDir)
@@ -135,7 +125,6 @@ async function testVersion(version) {
       fs.copyFileSync(path.join(process.cwd(), 'projects', LIB_NAME, file), path.join(projectDir, file))
     }
 
-    // 5. Update TS Configs for compatibility
     const tsconfigFiles = [
       path.join(workspaceDir, 'tsconfig.json'),
       path.join(workspaceDir, 'projects', LIB_NAME, 'tsconfig.spec.json'),
@@ -155,7 +144,6 @@ async function testVersion(version) {
       }
     }
 
-    // 6. Build
     await executeCommand(
       './node_modules/.bin/ng',
       ['build', LIB_NAME],
@@ -163,7 +151,6 @@ async function testVersion(version) {
       log
     )
 
-    // 7. Test
     await executeCommand('./node_modules/.bin/jest', [], { cwd: workspaceDir, env: { ...process.env } }, log)
 
     console.log(`Angular ${version}: PASSED`)
