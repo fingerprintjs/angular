@@ -5,38 +5,37 @@ on:
 
 jobs:
   test-matrix:
-    name: Angular ${{ matrix.angular-version }}
+    name: Angular ${{ matrix.angular }}
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        angular-version: [15, 16, 17, 18, 19, 20, 21]
         include:
-          - angular-version: 15
-            node-version: 18
-          - angular-version: 16
-            node-version: 18
-          - angular-version: 17
-            node-version: 18
-          - angular-version: 18
-            node-version: 20
-          - angular-version: 19
-            node-version: 20
-          - angular-version: 20
-            node-version: 20
-          - angular-version: 21
-            node-version: 22
+          - angular: 15
+            node: 18
+          - angular: 16
+            node: 18
+          - angular: 17
+            node: 18
+          - angular: 18
+            node: 20
+          - angular: 19
+            node: 20
+          - angular: 20
+            node: 20
+          - angular: 21
+            node: 22
 
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup Node.js ${{ matrix.node-version }}
+      - name: Setup Node.js ${{ matrix.node }}
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: ${{ matrix.node }}
 
       - name: Install pnpm
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v4
         with:
           version: 8
 
@@ -46,5 +45,5 @@ jobs:
       - name: Generate project version
         run: pnpm generate:version
 
-      - name: Run tests for Angular ${{ matrix.angular-version }}
-        run: pnpm run test:matrix -- --version=${{ matrix.angular-version }}
+      - name: Run Matrix Check for Angular ${{ matrix.angular }}
+        run: pnpm run test:matrix -- --version=${{ matrix.angular }}
