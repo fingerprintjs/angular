@@ -21,7 +21,7 @@
     "test:dts": "tsc -p tsconfig.test-dts.json",
     "test": "jest",
     "test:coverage": "jest --coverage",
-    "test:matrix": "node bin/test-matrix.mjs",
+    "test:matrix": "pnpm generate:version && node bin/test-matrix.mjs",
     "docs": "typedoc projects/fingerprintjs-pro-angular/src/public-api.ts --out docs",
     "changeset:publish": "HUSKY=0 pnpm build && changeset publish",
     "changeset:version": "changeset version"
