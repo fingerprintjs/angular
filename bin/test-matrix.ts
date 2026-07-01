@@ -2,7 +2,7 @@ import * as fs from 'fs'
 import * as path from 'path'
 import * as os from 'os'
 import { angularMetadata } from './utils/angularMetadata'
-import { setupLogDir, executeCommand, updateJsonFile, copyRecursive } from './utils/helpers'
+import { setupLogDir, executeCommand, updateJsonFile } from './utils/helpers'
 import { parseArgs } from 'node:util'
 
 const LIB_NAME = 'fingerprintjs-pro-angular'
@@ -57,28 +57,13 @@ async function testVersion(version: string): Promise<number> {
 
     const angularVersionTag = parseInt(version) > 15 ? `v${version}-lts` : `^${version}`
 
-    const packagesToInstall = [
-      `@angular/animations@${angularVersionTag}`,
-      `@angular/common@${angularVersionTag}`,
-      `@angular/compiler@${angularVersionTag}`,
-      `@angular/core@${angularVersionTag}`,
-      `@angular/forms@${angularVersionTag}`,
-      `@angular/platform-browser@${angularVersionTag}`,
-      `@angular/platform-browser-dynamic@${angularVersionTag}`,
-      `@angular/router@${angularVersionTag}`,
-      `zone.js@${meta.zone}`,
-      '@fingerprint/agent',
-    ]
+    const extraPackagesToInstall = [`zone.js@${meta.zone}`, `@angular/platform-browser-dynamic@${angularVersionTag}`]
 
     const jestVersion = meta.jest
     const typesJestVersion = meta.typesJest || jestVersion
 
-    const devPackagesToInstall = [
-      `@angular/cli@${angularVersionTag}`,
-      `@angular/compiler-cli@${angularVersionTag}`,
-      `@angular-devkit/build-angular@${angularVersionTag}`,
-      `ng-packagr@^${version}`,
-      `typescript@${meta.typescript}`,
+    const extraDevPackagesToInstall = [
+      '@fingerprint/agent',
       `jest-preset-angular@${meta.jpa}`,
       `jest@${jestVersion}`,
       `jest-environment-jsdom@${jestVersion}`,
@@ -95,14 +80,14 @@ async function testVersion(version: string): Promise<number> {
 
     await executeCommand(
       'pnpm',
-      ['add', ...packagesToInstall, ...devPackagesToInstall, ...commonOptions],
+      ['add', ...extraPackagesToInstall, ...extraDevPackagesToInstall, ...commonOptions],
       { cwd: workspaceDir, env: { ...process.env } },
       log
     )
 
     const libDestDir = path.join(workspaceDir, 'projects', LIB_NAME, 'src', 'lib')
     fs.mkdirSync(libDestDir, { recursive: true })
-    copyRecursive(path.join(process.cwd(), 'projects', LIB_NAME, 'src', 'lib'), libDestDir)
+    fs.cpSync(path.join(process.cwd(), 'projects', LIB_NAME, 'src', 'lib'), libDestDir, { recursive: true })
 
     fs.copyFileSync(
       path.join(process.cwd(), 'projects', LIB_NAME, 'src', 'public-api.ts'),

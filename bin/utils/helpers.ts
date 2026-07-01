@@ -45,17 +45,3 @@ export function updateJsonFile(filePath: string, updater: (json: any) => void): 
   updater(json)
   fs.writeFileSync(filePath, stringify(json, null, 2), 'utf8')
 }
-
-export function copyRecursive(src: string, dest: string): void {
-  const isDirectory = fs.existsSync(src) && fs.statSync(src).isDirectory()
-  if (isDirectory) {
-    if (!fs.existsSync(dest)) {
-      fs.mkdirSync(dest, { recursive: true })
-    }
-    fs.readdirSync(src).forEach((childItemName) => {
-      copyRecursive(path.join(src, childItemName), path.join(dest, childItemName))
-    })
-  } else {
-    fs.copyFileSync(src, dest)
-  }
-}
