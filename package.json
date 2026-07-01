@@ -88,5 +88,11 @@
   },
   "workspaces": [
     "projects/*"
-  ]
+  ],
+  "pnpm": {
+    "onlyBuiltDependencies": ["@parcel/watcher", "esbuild", "lmdb", "msgpackr-extract"],
+    "overrides": {
+      "rxjs": "~7.8.0"
+    }
+  }
 }
