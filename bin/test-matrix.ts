@@ -1,17 +1,15 @@
-#!/usr/bin/env node
-
-import fs from 'fs'
-import path from 'path'
-import os from 'os'
-import { angularMetadata } from './utils/angularMetadata.mjs'
-import { logErrorSummary, setupLogDir, executeCommand, updateJsonFile, copyRecursive } from './utils/helpers.mjs'
+import * as fs from 'fs'
+import * as path from 'path'
+import * as os from 'os'
+import { angularMetadata } from './utils/angularMetadata'
+import { setupLogDir, executeCommand, updateJsonFile, copyRecursive } from './utils/helpers'
 
 const LIB_NAME = 'fingerprintjs-pro-angular'
 const LOG_DIR = path.join(process.cwd(), 'test-logs')
 
-process.env.NG_CLI_ANALYTICS = 'false'
+process.env['NG_CLI_ANALYTICS'] = 'false'
 
-async function testVersion(version) {
+async function testVersion(version: string): Promise<number> {
   const meta = angularMetadata[version]
   if (!meta) {
     const errorMsg = `No metadata found for version ${version}`
@@ -23,7 +21,7 @@ async function testVersion(version) {
 
   const logFile = path.join(LOG_DIR, `angular-${version}.log`)
   const logStream = fs.createWriteStream(logFile)
-  const log = (data) => logStream.write(data)
+  const log = (data: string) => logStream.write(data)
 
   const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'angular-test-'))
   const workspaceDir = path.join(tempDir, 'test-workspace')
@@ -56,7 +54,7 @@ async function testVersion(version) {
       log
     )
 
-    const angularVersionTag = version > 15 ? `v${version}-lts` : `^${version}`
+    const angularVersionTag = parseInt(version) > 15 ? `v${version}-lts` : `^${version}`
 
     const packagesToInstall = [
       `@angular/animations@${angularVersionTag}`,
@@ -87,7 +85,12 @@ async function testVersion(version) {
       '@types/node',
     ]
 
-    const commonOptions = ['--config.strict-peer-dependencies=false', '--no-lockfile', '--config.fund=false']
+    const commonOptions = [
+      '--config.strict-peer-dependencies=false',
+      '--no-lockfile',
+      '--config.fund=false',
+      '--ignore-scripts',
+    ]
 
     await executeCommand(
       'pnpm',
@@ -155,9 +158,8 @@ async function testVersion(version) {
 
     console.log(`Angular ${version}: PASSED`)
     return 0
-  } catch (err) {
+  } catch (err: any) {
     log(err.stack || err.message)
-    logErrorSummary(logStream, logFile, err, version)
     return 1
   } finally {
     logStream.end()
@@ -168,7 +170,7 @@ async function testVersion(version) {
 setupLogDir(LOG_DIR)
 
 const args = process.argv.slice(2)
-const versionArgs = []
+const versionArgs: string[] = []
 for (let i = 0; i < args.length; i++) {
   if (args[i].startsWith('--version=')) {
     versionArgs.push(args[i].split('=')[1])
@@ -179,14 +181,21 @@ for (let i = 0; i < args.length; i++) {
 
 const versionsToTest = versionArgs.length > 0 ? versionArgs : Object.keys(angularMetadata)
 
-console.log(`Starting matrix tests for: ${versionsToTest.join(', ')}`)
+async function run() {
+  console.log(`Starting matrix tests for: ${versionsToTest.join(', ')}`)
 
-const results = await Promise.all(versionsToTest.map((version) => testVersion(version)))
-const failed = results.some((code) => code !== 0)
+  const results = await Promise.all(versionsToTest.map((version) => testVersion(version)))
+  const failed = results.some((code) => code !== 0)
 
-if (failed) {
-  process.exit(1)
-} else {
-  console.log('Success: All versions passed')
-  process.exit(0)
+  if (failed) {
+    process.exit(1)
+  } else {
+    console.log('Success: All versions passed')
+    process.exit(0)
+  }
 }
+
+run().catch((err) => {
+  console.error(err)
+  process.exit(1)
+})

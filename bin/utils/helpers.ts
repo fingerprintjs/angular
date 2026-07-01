@@ -1,8 +1,9 @@
-import fs from 'fs'
-import path from 'path'
-import { spawn } from 'child_process'
+import * as fs from 'fs'
+import * as path from 'path'
+import { spawn, SpawnOptions } from 'child_process'
+import { parse, stringify } from 'comment-json'
 
-export function setupLogDir(logDir) {
+export function setupLogDir(logDir: string): void {
   if (!fs.existsSync(logDir)) {
     fs.mkdirSync(logDir, { recursive: true })
   } else {
@@ -12,24 +13,17 @@ export function setupLogDir(logDir) {
   }
 }
 
-export function logErrorSummary(logStream, logFile, err, version) {
-  console.log(`Angular ${version}: FAILED (see ${logFile})`)
-
-  try {
-    const logContent = fs.readFileSync(logFile, 'utf8')
-    const lines = logContent.split('\n')
-    console.log(lines.slice(-15).join('\n'))
-  } catch (e) {
-    // ignore
-  }
-}
-
-export function executeCommand(cmd, args, opts, log) {
+export function executeCommand(
+  cmd: string,
+  args: string[],
+  opts: SpawnOptions,
+  log?: (data: string) => void
+): Promise<void> {
   return new Promise((resolve, reject) => {
     const child = spawn(cmd, args, opts)
     if (log) {
-      child.stdout.on('data', log)
-      child.stderr.on('data', log)
+      child.stdout?.on('data', (data) => log(data.toString()))
+      child.stderr?.on('data', (data) => log(data.toString()))
     }
     child.on('close', (code) => {
       if (code === 0) {
@@ -41,18 +35,17 @@ export function executeCommand(cmd, args, opts, log) {
   })
 }
 
-export function updateJsonFile(filePath, updater) {
+export function updateJsonFile(filePath: string, updater: (json: any) => void): void {
   if (!fs.existsSync(filePath)) {
     return
   }
   const content = fs.readFileSync(filePath, 'utf8')
-  const cleanContent = content.replace(/\/\*[\s\S]*?\*\/|([^\\:]|^)\/\/.*$/gm, '$1')
-  const json = JSON.parse(cleanContent)
+  const json = parse(content)
   updater(json)
-  fs.writeFileSync(filePath, JSON.stringify(json, null, 2), 'utf8')
+  fs.writeFileSync(filePath, stringify(json, null, 2), 'utf8')
 }
 
-export function copyRecursive(src, dest) {
+export function copyRecursive(src: string, dest: string): void {
   const isDirectory = fs.existsSync(src) && fs.statSync(src).isDirectory()
   if (isDirectory) {
     if (!fs.existsSync(dest)) {
