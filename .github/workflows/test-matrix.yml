@@ -1,0 +1,49 @@
+name: Test Angular Matrix
+
+on:
+  pull_request:
+
+jobs:
+  test-matrix:
+    name: Angular ${{ matrix.angular }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - angular: 15
+            node: 18
+          - angular: 16
+            node: 18
+          - angular: 17
+            node: 18
+          - angular: 18
+            node: 20
+          - angular: 19
+            node: 20
+          - angular: 20
+            node: 20
+          - angular: 21
+            node: 22
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js ${{ matrix.node }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Generate project version
+        run: pnpm generate:version
+
+      - name: Run Matrix Check for Angular ${{ matrix.angular }}
+        run: pnpm run test:matrix --version=${{ matrix.angular }}
