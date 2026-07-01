@@ -32,6 +32,7 @@ export function executeCommand(
         reject(new Error(`Command failed with code ${code}: ${cmd} ${args.join(' ')}`))
       }
     })
+    child.on('error', (err) => reject(err))
   })
 }
 
