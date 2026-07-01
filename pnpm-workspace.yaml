@@ -6,3 +6,5 @@ allowBuilds:
   lmdb: true
   msgpackr-extract: true
   nice-napi: true
+overrides:
+  rxjs: '~7.8.0'
