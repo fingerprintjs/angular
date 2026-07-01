@@ -3,6 +3,7 @@ import * as path from 'path'
 import * as os from 'os'
 import { angularMetadata } from './utils/angularMetadata'
 import { setupLogDir, executeCommand, updateJsonFile, copyRecursive } from './utils/helpers'
+import { parseArgs } from 'node:util'
 
 const LIB_NAME = 'fingerprintjs-pro-angular'
 const LOG_DIR = path.join(process.cwd(), 'test-logs')
@@ -169,15 +170,16 @@ async function testVersion(version: string): Promise<number> {
 
 setupLogDir(LOG_DIR)
 
-const args = process.argv.slice(2)
-const versionArgs: string[] = []
-for (let i = 0; i < args.length; i++) {
-  if (args[i].startsWith('--version=')) {
-    versionArgs.push(args[i].split('=')[1])
-  } else if (args[i] === '--version' && i + 1 < args.length) {
-    versionArgs.push(args[++i])
-  }
-}
+const { version: versionsParsed } = parseArgs({
+  options: {
+    version: {
+      type: 'string',
+      multiple: true,
+      short: 'v',
+    },
+  },
+}).values
+const versionArgs: string[] = versionsParsed ?? []
 
 const versionsToTest = versionArgs.length > 0 ? versionArgs : Object.keys(angularMetadata)
 
