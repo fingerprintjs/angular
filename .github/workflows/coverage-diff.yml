@@ -22,7 +22,7 @@ jobs:
           cache: 'pnpm'
 
       - name: Install Node packages
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
 
       - name: Generate version
         run: pnpm generate:version
