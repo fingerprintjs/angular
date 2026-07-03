@@ -1,14 +1,38 @@
-name: Check coverage for PR
+name: 'Check coverage for PR'
 
 on:
   pull_request:
 
 jobs:
   run-tests-check-coverage:
-    name: Run tests & check coverage
-    permissions:
-      checks: write
-      pull-requests: write
-    uses: fingerprintjs/dx-team-toolkit/.github/workflows/coverage-diff.yml@v1
-    with:
-      runAfterInstall: pnpm generate:version
+    name: 'Run tests & check coverage'
+
+    steps:
+      - name: 'Checkout the repository'
+        uses: actions/checkout@v7
+
+      - name: 'Install pnpm'
+        uses: pnpm/action-setup@0ebf47130e4866e96fce0953f49152a61190b271
+
+      - name: 'Install latest node version'
+        uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+          cache: 'pnpm'
+
+      - name: 'Install Node packages'
+        run: pnpm install
+
+      - name: 'Generate version'
+        run: pnpm generate:version
+
+      - name: 'Build'
+        run: pnpm build
+
+      - name: 'Run tests and prepare coverage report'
+        run: pnpm test:coverage
+
+      - name: Send Coverage to Coveralls
+        uses: coverallsapp/github-action@648a8eb78e6d50909eff900e4ec85cab4524a45b # v2.3.6
+        # make it optional to not fail the whole job if coveralls fails
+        continue-on-error: true
