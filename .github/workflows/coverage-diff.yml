@@ -6,6 +6,7 @@ on:
 jobs:
   run-tests-check-coverage:
     name: Run tests & check coverage
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout the repository
