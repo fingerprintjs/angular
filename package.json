@@ -18,7 +18,7 @@
     "test:dts": "tsc -p tsconfig.test-dts.json",
     "test": "jest",
     "test:coverage": "jest --coverage",
-    "docs": "typedoc projects/fingerprintjs-pro-angular/src/public-api.ts --out docs",
+    "docs": "typedoc projects/fingerprintjs-pro-angular/src/public-api.ts --out docs --tsconfig projects/fingerprintjs-pro-angular/tsconfig.lib.json",
     "changeset:publish": "HUSKY=0 pnpm build && changeset publish",
     "changeset:version": "changeset version"
   },
