@@ -35,5 +35,8 @@ jobs:
 
       - name: Send Coverage to Coveralls
         uses: coverallsapp/github-action@648a8eb78e6d50909eff900e4ec85cab4524a45b # v2.3.6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path-to-lcov: coverage/lcov.info
         # make it optional to not fail the whole job if coveralls fails
         continue-on-error: true
