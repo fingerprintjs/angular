@@ -7,6 +7,9 @@ jobs:
   run-tests-check-coverage:
     name: Run tests & check coverage
     runs-on: ubuntu-latest
+    permissions:
+      checks: write
+      pull-requests: write
 
     steps:
       - name: Checkout the repository
