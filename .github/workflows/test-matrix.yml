@@ -42,8 +42,5 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Generate project version
-        run: pnpm generate:version
-
       - name: Run Matrix Check for Angular ${{ matrix.angular }}
         run: pnpm run test:matrix --version=${{ matrix.angular }}
