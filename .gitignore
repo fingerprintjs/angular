@@ -5,6 +5,7 @@
 /tmp
 /out-tsc
 /bazel-out
+.pnpm-store
 projects/*/dist
 projects/*/out-tsc
 
@@ -12,6 +13,7 @@ projects/*/out-tsc
 node_modules
 npm-debug.log
 yarn-error.log
+test-logs
 
 # IDEs and editors
 .idea/
