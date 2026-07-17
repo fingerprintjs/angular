@@ -10,8 +10,8 @@
 <a href="https://github.com/fingerprintjs/angular/actions/workflows/ci.yml">
   <img src="https://github.com/fingerprintjs/angular/actions/workflows/ci.yml/badge.svg" alt="CI badge" />
 </a>
-<a href="https://fingerprintjs.github.io/angular/coverage/">
- <img src="https://fingerprintjs.github.io/angular/coverage/badges.svg" alt="coverage">
+<a href='https://coveralls.io/github/fingerprintjs/angular?branch=main'>
+  <img src='https://coveralls.io/repos/github/fingerprintjs/angular/badge.svg?branch=main' alt='Coverage Status' />
 </a>
 <a href="https://www.npmjs.com/package/@fingerprint/angular">
   <img src="https://img.shields.io/npm/v/@fingerprint/angular.svg" alt="Current NPM version">

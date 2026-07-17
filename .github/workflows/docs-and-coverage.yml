@@ -11,3 +11,6 @@ jobs:
     uses: fingerprintjs/dx-team-toolkit/.github/workflows/docs-and-coverage.yml@v1
     with:
       run-after-install: pnpm generate:version
+      prepare-gh-pages-commands: |
+        mv docs ./gh-pages
+        rm -rf ./gh-pages/coverage
