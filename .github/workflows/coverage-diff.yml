@@ -6,34 +6,35 @@ on:
 jobs:
   run-tests-check-coverage:
     name: Run tests & check coverage
-    runs-on: ubuntu-latest
     permissions:
       checks: write
       pull-requests: write
+    uses: fingerprintjs/dx-team-toolkit/.github/workflows/coverage-diff.yml@v1
+    with:
+      runAfterInstall: pnpm generate:version
 
+  send-coverage-to-coveralls:
+    name: Send coverage to Coveralls
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v7
 
       - name: Install pnpm
-        uses: pnpm/action-setup@0ebf47130e4866e96fce0953f49152a61190b271
+        uses: pnpm/action-setup@v6
 
-      - name: Install latest node version
-        uses: actions/setup-node@v6
+      - name: Install Node
+        uses: actions/setup-node@v7
         with:
-          node-version: '22'
-          cache: 'pnpm'
+          cache: pnpm
 
-      - name: Install Node packages
-        run: pnpm install --frozen-lockfile
+      - name: Install dependencies
+        run: pnpm install
 
       - name: Generate version
         run: pnpm generate:version
 
-      - name: Build
-        run: pnpm build
-
-      - name: Run tests and prepare coverage report
+      - name: Run tests with coverage
         run: pnpm test:coverage
 
       - name: Send Coverage to Coveralls
@@ -41,5 +42,3 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           path-to-lcov: coverage/lcov.info
-        # make it optional to not fail the whole job if coveralls fails
-        continue-on-error: true

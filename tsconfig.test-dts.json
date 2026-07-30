@@ -8,14 +8,17 @@
       "es2020",
       "dom"
     ],
-    "skipLibCheck": true,
+    "skipLibCheck": false,
     "noEmit": true,
     "isolatedModules": true,
+    "strict": true,
+    "experimentalDecorators": true,
+    "types": [],
     "paths": {
       "@fingerprint/angular": ["dist/fingerprintjs-pro-angular"]
     }
   },
   "include": [
-    "dist/fingerprintjs-pro-angular/index.d.ts"
+    "dist/fingerprintjs-pro-angular/**/*.d.ts"
   ]
 }
