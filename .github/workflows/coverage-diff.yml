@@ -13,12 +13,33 @@ jobs:
     uses: fingerprintjs/dx-team-toolkit/.github/workflows/coverage-diff.yml@v1
     with:
       runAfterInstall: pnpm generate:version
+
   send-coverage-to-coveralls:
+    name: Send coverage to Coveralls
+    runs-on: ubuntu-latest
     steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v7
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v6
+
+      - name: Install Node
+        uses: actions/setup-node@v7
+        with:
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Generate version
+        run: pnpm generate:version
+
+      - name: Run tests with coverage
+        run: pnpm test:coverage
+
       - name: Send Coverage to Coveralls
         uses: coverallsapp/github-action@648a8eb78e6d50909eff900e4ec85cab4524a45b # v2.3.6
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           path-to-lcov: coverage/lcov.info
-        # make it optional to not fail the whole job if coveralls fails
-        continue-on-error: true
