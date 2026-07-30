@@ -5,7 +5,6 @@ on:
 
 jobs:
   run-tests-check-coverage:
-    runs-on: ubuntu-latest
     name: Run tests & check coverage
     permissions:
       checks: write
