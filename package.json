@@ -22,7 +22,7 @@
     "test": "jest",
     "test:coverage": "jest --coverage",
     "test:matrix": "pnpm generate:version && tsx bin/test-matrix.ts",
-    "docs": "typedoc projects/fingerprintjs-pro-angular/src/public-api.ts --out docs",
+    "docs": "typedoc projects/fingerprintjs-pro-angular/src/public-api.ts --tsconfig projects/fingerprintjs-pro-angular/tsconfig.lib.json --out docs",
     "changeset:publish": "HUSKY=0 pnpm build && changeset publish",
     "changeset:version": "changeset version"
   },
