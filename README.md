@@ -42,6 +42,7 @@ This SDK supports v4 of the Fingerprint JavaScript agent. See the [v3 to v4 migr
 - [Getting started](#getting-started)
 - [Caching strategy](#caching-strategy)
 - [Documentation](#documentation)
+- [Version support](#version-support)
 - [Support and feedback](#support-and-feedback)
 - [License](#license)
 
@@ -247,6 +248,13 @@ This repository contains an example Angular application. To run the demo locally
 5. Run `pnpm start` to start the demo application. (The app will now use the internal library source directly).
 
 The application will start on http://localhost:4200.
+
+## Version support
+
+| SDK major version | JS Agent version | Status | End of support |
+|---|---|---|---|
+| v3.x (current) | [v4](https://docs.fingerprint.com/reference/js-agent) | Supported | - |
+| v1.x-v2.x | [v3](https://docs.fingerprint.com/reference/v3/javascript-agent) | Deprecated (security fixes only). See the [migration guide](https://docs.fingerprint.com/docs/angular#migration-guide-for-angular-sdk-v3-0-0). | To be decided |
 
 ## Support and feedback
 
