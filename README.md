@@ -42,6 +42,7 @@ This SDK supports v4 of the Fingerprint JavaScript agent. See the [v3 to v4 migr
 - [Getting started](#getting-started)
 - [Caching strategy](#caching-strategy)
 - [Documentation](#documentation)
+- [Version support](#version-support)
 - [Support and feedback](#support-and-feedback)
 - [License](#license)
 
@@ -339,6 +340,13 @@ This repository also contains an example Angular application that uses Angular 2
 3. Create a dev environment file with `cp projects/demo-angular21/src/environments/environment.ts projects/demo-angular21/src/environments/environment.dev.ts`, and inside, replace `Fingerprint public key` with your actual public key.
 4. Simply run `pnpm ng serve` to start the demo application.
 
+
+## Version support
+
+| SDK major version | JS Agent version | Status | End of support |
+|---|---|---|---|
+| v3.x (current) | [v4](https://docs.fingerprint.com/reference/js-agent) | Supported | - |
+| v1.x-v2.x | [v3](https://docs.fingerprint.com/reference/v3/javascript-agent) | Deprecated (security fixes only). See the [migration guide](https://docs.fingerprint.com/docs/angular#migration-guide-for-angular-sdk-v3-0-0). | To be decided |
 
 ## Support and feedback
 
