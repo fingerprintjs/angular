@@ -8,6 +8,10 @@ on:
 jobs:
   generate-docs-and-coverage:
     name: Generate docs and coverage report
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
     uses: fingerprintjs/dx-team-toolkit/.github/workflows/docs-and-coverage.yml@v1
     with:
       run-after-install: pnpm generate:version
