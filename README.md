@@ -354,7 +354,7 @@ To ask questions or provide feedback, use [Issues](https://github.com/fingerprin
 
 ## API Reference
 
-See the full [generated API reference](https://fingerprintjs.github.io/angular/docs).
+See the full [generated API reference](https://fingerprintjs.github.io/angular/).
 
 ## License
 
