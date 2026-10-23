@@ -182,9 +182,9 @@ The library can be used with Angular SSR. Keep in mind that visitor identificati
 
 ## Linking and tagging information
 
-The `event_id` provided by Fingerprint Identification is especially useful when combined with information you already know about your users, for example, account IDs, order IDs, etc. To learn more about various applications of the `linkedId` and `tag`, see [Linking and tagging information](https://docs.fingerprint.com/docs/tagging-information).
+The `event_id` provided by Fingerprint Identification is especially useful when combined with information you already know about your users, for example, account IDs, order IDs, etc. To learn more about various applications of the `linkedId` and `tags`, see [Linking and tagging information](https://docs.fingerprint.com/docs/tagging-information).
 
-Associate your data with an identification event using the `linkedId` or `tag` parameter of the options object passed into the `getVisitorData()` method:
+Associate your data with an identification event using the `linkedId` or `tags` parameter of the options object passed into the `getVisitorData()` method:
 
 Standalone application example (Angular 16+):
 
@@ -205,7 +205,7 @@ export class HomeComponent {
   async onIdentifyButtonClick(): Promise<void> {
     const data = await this.fingerprintService.getVisitorData({
       linkedId: 'user_1234',
-      tag: {
+      tags: {
         userAction: 'login',
         analyticsId: 'UA-5555-1111-1',
       },
@@ -235,7 +235,7 @@ export class HomeComponent {
   async onIdentifyButtonClick(): Promise<void> {
     const data = await this.fingerprintService.getVisitorData({
       linkedId: 'user_1234',
-      tag: {
+      tags: {
         userAction: 'login',
         analyticsId: 'UA-5555-1111-1',
       },
@@ -245,6 +245,9 @@ export class HomeComponent {
   }
 }
 ```
+
+> [!NOTE]
+> The `tag` option is deprecated in favor of `tags`. `tag` still works, but if both are provided, `tags` takes precedence.
 
 ## Caching strategy
 
@@ -316,7 +319,8 @@ This method performs identification requests with the FingerprintJS Pro API.
 | Property   | Type                   | Required | Description                                                                             |
 |------------|------------------------|----------|-----------------------------------------------------------------------------------------|
 | `timeout`  | `number`               | No       | Total time (in ms) allowed for the identification event. Default is `10000`.            |
-| `tag`      | `Fingerprint.TagValue` | No       | A user-provided value or object that will be returned back to you in a webhook message. |
+| `tags`     | `Fingerprint.TagValue` | No       | A user-provided value or object that will be returned back to you in a webhook message. |
+| `tag`      | `Fingerprint.TagValue` | No       | Deprecated. Use `tags` instead.                                                         |
 | `linkedId` | `string`               | No       | A way of linking current identification event with a custom identifier.                 |
 
 ## Legacy Demo application
