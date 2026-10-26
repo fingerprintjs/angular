@@ -35,7 +35,7 @@
     "@angular/core": ">=15.0.0"
   },
   "dependencies": {
-    "@fingerprint/agent": "^4.0.0",
+    "@fingerprint/agent": "^4.1.6",
     "tslib": "^2.5.0"
   }
 }

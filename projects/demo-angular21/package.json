@@ -11,7 +11,7 @@
   },
   "private": true,
   "dependencies": {
-    "@fingerprint/agent": "^4.0.0",
+    "@fingerprint/agent": "^4.1.6",
     "@angular/common": "^21.2.0",
     "@angular/compiler": "^21.2.0",
     "@angular/core": "^21.2.0",

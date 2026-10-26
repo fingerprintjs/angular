@@ -73,8 +73,8 @@ importers:
         specifier: ^17.2.0
         version: 17.2.0
       '@fingerprint/agent':
-        specifier: ^4.0.0
-        version: 4.0.3
+        specifier: ^4.1.6
+        version: 4.1.6
       '@fingerprintjs/changesets-changelog-format':
         specifier: ^0.2.0
         version: 0.2.0
@@ -172,8 +172,8 @@ importers:
         specifier: ^21.2.0
         version: 21.2.14(@angular/common@21.2.14(@angular/core@21.2.14(@angular/compiler@21.2.14)(rxjs@7.8.2)(zone.js@0.11.5))(rxjs@7.8.2))(@angular/core@21.2.14(@angular/compiler@21.2.14)(rxjs@7.8.2)(zone.js@0.11.5))(@angular/platform-browser@21.2.14(@angular/animations@15.2.10(@angular/core@15.2.10(rxjs@7.8.2)(zone.js@0.11.5)))(@angular/common@21.2.14(@angular/core@21.2.14(@angular/compiler@21.2.14)(rxjs@7.8.2)(zone.js@0.11.5))(rxjs@7.8.2))(@angular/core@21.2.14(@angular/compiler@21.2.14)(rxjs@7.8.2)(zone.js@0.11.5)))(rxjs@7.8.2)
       '@fingerprint/agent':
-        specifier: ^4.0.0
-        version: 4.0.3
+        specifier: ^4.1.6
+        version: 4.1.6
       rxjs:
         specifier: ~7.8.0
         version: 7.8.2
@@ -236,8 +236,8 @@ importers:
         specifier: '>=15.0.0'
         version: 15.2.10(rxjs@7.8.2)(zone.js@0.11.5)
       '@fingerprint/agent':
-        specifier: ^4.0.0
-        version: 4.0.3
+        specifier: ^4.1.6
+        version: 4.1.6
       tslib:
         specifier: ^2.5.0
         version: 2.6.2
@@ -2118,8 +2118,8 @@ packages:
       '@noble/hashes':
         optional: true
 
-  '@fingerprint/agent@4.0.3':
-    resolution: {integrity: sha512-hYAk8gPKgW3i1zkZm62wPp31ibGwHao0QXU5F7ydiQwxhxPhfd4IjPIPxDkuQJgH3GaBkYn7Hgkgrq38K9aJzw==}
+  '@fingerprint/agent@4.1.6':
+    resolution: {integrity: sha512-Ro7IYCaHhTv+TqnB6Hmv33kNQm1Q+Cs3xEqkxwsjfBkS8z2zb338fHWXK9Ef+qapl/qX2mCCIbjml+fIy9XCKg==}
 
   '@fingerprintjs/changesets-changelog-format@0.2.0':
     resolution: {integrity: sha512-1jI+J1r8OKUtjlFfQW4bmQ8u4E1097zPaKw5fUCgAcahLPgwW4Ae+Keoc253CSyyaKgTu2v/wniUGchmPaXAsg==}
@@ -10975,7 +10975,7 @@ snapshots:
 
   '@exodus/bytes@1.15.1': {}
 
-  '@fingerprint/agent@4.0.3': {}
+  '@fingerprint/agent@4.1.6': {}
 
   '@fingerprintjs/changesets-changelog-format@0.2.0':
     dependencies:
