@@ -1,5 +1,15 @@
 # @fingerprint/angular
 
+## 3.1.0
+
+### Minor Changes
+
+- Deprecate `tag` in favor of `tags` ([a31cb2a](https://github.com/fingerprintjs/angular/commit/a31cb2a421424bcfef5d67aae7e5babdc2483308))
+
+### Patch Changes
+
+- Bump `@fingerprint/agent` dependency to `^4.1.6` ([a31cb2a](https://github.com/fingerprintjs/angular/commit/a31cb2a421424bcfef5d67aae7e5babdc2483308))
+
 ## 3.0.0
 
 ### Major Changes
