@@ -11,14 +11,18 @@ The main branch is locked for the push action. For proposing changes, use the st
 Run `pnpm run generate:version` before interacting with the library.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.6.
-The root project is the demo app. You can find the library in `projects/ng-fingerprint-pro` folder.
+Repository layout:
+
+- `projects/fingerprintjs-pro-angular`: the library.
+- `projects/demo-angular15`: Angular 15 demo app (NgModule + SSR). It is part of the root workspace and uses the root `node_modules`. Run it with `pnpm start`.
+- `projects/demo-angular21`: Angular 21 demo app. It is a separate package with its own dependencies.
 
 Run `pnpm watch:library` to rebuild library on each update.
 Run `pnpm start` for the demo app dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
 ### Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Run `ng generate component component-name --project=demo-angular15` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
 ### Running unit tests
 
