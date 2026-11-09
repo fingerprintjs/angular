@@ -8,7 +8,7 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 2020,
     sourceType: 'module',
-    // project: ['./tsconfig.app.json'],
+    // project: ['./projects/demo-angular15/tsconfig.app.json'],
   },
   settings: {},
   plugins: ['@typescript-eslint', 'prettier', '@angular-eslint/eslint-plugin'],

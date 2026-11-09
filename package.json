@@ -1,5 +1,5 @@
 {
-  "name": "fingerprintjs-pro-angular-demo",
+  "name": "fingerprintjs-pro-angular-workspace",
   "version": "0.0.0",
   "engines": {
     "node": ">=18.0.0"
@@ -7,14 +7,14 @@
   "scripts": {
     "prepare": "husky install",
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve demo-angular15",
     "build": "ng build fingerprintjs-pro-angular && ./bin/copy_assets.sh",
-    "watch": "ng build --watch --configuration development",
+    "watch": "ng build demo-angular15 --watch --configuration development",
     "watch:library": "ng build fingerprintjs-pro-angular --watch",
-    "dev:ssr": "ng run fingerprintjs-pro-angular-demo:serve-ssr",
-    "serve:ssr": "node dist/fingerprintjs-pro-angular-demo/server/main.js",
-    "build:ssr": "ng build && ng run fingerprintjs-pro-angular-demo:server",
-    "prerender": "ng run fingerprintjs-pro-angular-demo:prerender",
+    "dev:ssr": "ng run demo-angular15:serve-ssr",
+    "serve:ssr": "node dist/demo-angular15/server/main.js",
+    "build:ssr": "ng build demo-angular15 && ng run demo-angular15:server",
+    "prerender": "ng run demo-angular15:prerender",
     "generate:version": "node bin/generate-version.js",
     "lint": "eslint --ext .js,.mjs,.ts --ignore-path .gitignore --max-warnings 0 .",
     "lint:fix": "eslint --ext .js,.mjs,.ts --ignore-path .gitignore --max-warnings 0 --fix .",

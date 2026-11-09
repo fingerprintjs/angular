@@ -46,7 +46,7 @@ testem.log
 Thumbs.db
 
 # Environment variables
-/src/environments/environment.dev.ts
+/projects/demo-angular15/src/environments/environment.dev.ts
 
 # Typedoc
 docs
