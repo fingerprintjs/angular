@@ -45,8 +45,5 @@ testem.log
 .DS_Store
 Thumbs.db
 
-# Environment variables
-/projects/demo-angular15/src/environments/environment.dev.ts
-
 # Typedoc
 docs
