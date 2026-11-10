@@ -9,11 +9,10 @@
     ]
   },
   "files": [
-    "src/test.ts",
-    "src/polyfills.ts"
+    "test.ts"
   ],
   "include": [
-    "src/**/*.spec.ts",
-    "src/**/*.d.ts"
+    "projects/fingerprintjs-pro-angular/**/*.spec.ts",
+    "projects/fingerprintjs-pro-angular/**/*.d.ts"
   ]
 }

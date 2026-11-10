@@ -178,7 +178,7 @@ export class HomeComponent {
 
 ## Server-side rendering (SSR) with Angular SSR
 
-The library can be used with Angular SSR. Keep in mind that visitor identification is only possible in the browser, so your visitor identification code should only run client-side. See the example implementation for more details.
+The library can be used with Angular SSR. Keep in mind that visitor identification is only possible in the browser, so your visitor identification code should only run client-side. See the [Angular 15 demo application](projects/demo-angular15) for an example implementation.
 
 ## Linking and tagging information
 
@@ -323,27 +323,30 @@ This method performs identification requests with the FingerprintJS Pro API.
 | `tag`      | `Fingerprint.TagValue` | No       | Deprecated. Use `tags` instead.                                                         |
 | `linkedId` | `string`               | No       | A way of linking current identification event with a custom identifier.                 |
 
-## Legacy Demo application
+## Angular 15 demo application (NgModule + SSR)
 
-This repository contains an example Angular application. To run the demo locally:
+The [`projects/demo-angular15`](projects/demo-angular15) folder contains an example Angular 15 application that uses `NgModule` and server-side rendering. It shares the root `node_modules` and uses the library source directly. To run the demo locally:
 
 1. Clone the repository with `git clone git@github.com:fingerprintjs/angular.git`.
 2. Inside the root folder, run `pnpm install` to install the dependencies.
-3. Create a dev environment file with `cp src/environments/environment.ts src/environments/environment.dev.ts`, and inside, replace `Fingerprint public key` with your actual public key.
+3. Create a dev environment file with `cp projects/demo-angular15/src/environments/environment.ts projects/demo-angular15/src/environments/environment.dev.ts`, and inside, replace `Fingerprint public key` with your actual public key.
 4. Run `pnpm generate:version` to create an SDK version file.
 5. Run `pnpm start` to start the demo application. (The app will now use the internal library source directly).
 
 The application will start on http://localhost:4200.
 
-## Angular 21 Demo Application
+## Angular 21 demo application
 
-This repository also contains an example Angular application that uses Angular 21. To run the demo locally, apply the same steps as above with key differences:
+The [`projects/demo-angular21`](projects/demo-angular21) folder contains an example standalone Angular 21 application. It is a separate package with its own dependencies. To run the demo locally:
 
-1. Navigate into `projects/demo-angular21` folder. Run `cd projects/demo-angular21` after you clone the repository.
-2. Run `pnpm install` to install the dependencies.
-3. Create a dev environment file with `cp projects/demo-angular21/src/environments/environment.ts projects/demo-angular21/src/environments/environment.dev.ts`, and inside, replace `Fingerprint public key` with your actual public key.
-4. Simply run `pnpm ng serve` to start the demo application.
+1. Clone the repository with `git clone git@github.com:fingerprintjs/angular.git`.
+2. Inside the root folder, run `pnpm install` to install the dependencies.
+3. Run `pnpm generate:version` to create an SDK version file.
+4. Run `cd projects/demo-angular21` to move into the demo folder.
+5. Create a dev environment file with `cp src/environments/environment.ts src/environments/environment.dev.ts`, and inside, replace `Fingerprint public key` with your actual public key.
+6. Run `pnpm start` to start the demo application.
 
+The application will start on http://localhost:4200.
 
 ## Version support
 
