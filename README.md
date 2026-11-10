@@ -325,15 +325,18 @@ This method performs identification requests with the FingerprintJS Pro API.
 
 ## Angular 15 demo application (NgModule + SSR)
 
-The [`projects/demo-angular15`](projects/demo-angular15) folder contains an example Angular 15 application that uses `NgModule` and server-side rendering. It shares the root `node_modules` and uses the library source directly. To run the demo locally:
+The [`projects/demo-angular15`](projects/demo-angular15) folder contains an example Angular 15 application that uses `NgModule` and server-side rendering. It is a separate package with its own dependencies and uses the library source directly. To run the demo locally:
 
 1. Clone the repository with `git clone git@github.com:fingerprintjs/angular.git`.
 2. Inside the root folder, run `pnpm install` to install the dependencies.
-3. Create a dev environment file with `cp projects/demo-angular15/src/environments/environment.ts projects/demo-angular15/src/environments/environment.dev.ts`, and inside, replace `Fingerprint public key` with your actual public key.
-4. Run `pnpm generate:version` to create an SDK version file.
-5. Run `pnpm start` to start the demo application. (The app will now use the internal library source directly).
+3. Run `pnpm generate:version` to create an SDK version file.
+4. Run `cd projects/demo-angular15` to move into the demo folder.
+5. Create a dev environment file with `cp src/environments/environment.ts src/environments/environment.dev.ts`, and inside, replace `Fingerprint public key` with your actual public key.
+6. Run `pnpm start` to start the demo application.
 
 The application will start on http://localhost:4200.
+
+To try server-side rendering, run `pnpm build:ssr && pnpm serve:ssr` from the demo folder. The server starts on http://localhost:4000.
 
 ## Angular 21 demo application
 

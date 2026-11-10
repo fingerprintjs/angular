@@ -14,7 +14,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 Repository layout:
 
 - `projects/fingerprintjs-pro-angular`: the library.
-- `projects/demo-angular15`: Angular 15 demo app (NgModule + SSR). It is part of the root workspace and uses the root `node_modules`. Run it with `pnpm start`.
+- `projects/demo-angular15`: Angular 15 demo app (NgModule + SSR). It is a separate package with its own dependencies and `angular.json`. Run it with `pnpm start`.
 - `projects/demo-angular21`: Angular 21 demo app. It is a separate package with its own dependencies.
 
 Run `pnpm watch:library` to rebuild library on each update.
@@ -22,7 +22,7 @@ Run `pnpm start` for the demo app dev server. Navigate to `http://localhost:4200
 
 ### Code scaffolding
 
-Run `ng generate component component-name --project=demo-angular15` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Run `ng generate component component-name` inside the demo folder (for example `projects/demo-angular15`) to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
 ### Running unit tests
 
