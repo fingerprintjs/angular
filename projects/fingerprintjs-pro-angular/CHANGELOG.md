@@ -1,5 +1,11 @@
 # @fingerprint/angular
 
+## 3.1.1
+
+### Patch Changes
+
+- Fix the integration identifier sent with identification requests to use the `fingerprintjs-pro-angular` prefix (in the `ii` param), consistent with `v2` and the other Fingerprint SDKs. ([3ce7658](https://github.com/fingerprintjs/angular/commit/3ce7658b4265fbd848072b58111f6da97372c072))
+
 ## 3.1.0
 
 ### Minor Changes
