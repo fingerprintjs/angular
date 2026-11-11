@@ -47,7 +47,7 @@ export class FingerprintService {
       const integrationInfo = startOptions.integrationInfo || []
       this.publicAgent = Fingerprint.start({
         ...startOptions,
-        integrationInfo: [...integrationInfo, `angular/${packageVersion}`],
+        integrationInfo: [...integrationInfo, `fingerprintjs-pro-angular/${packageVersion}`],
       })
     }
   }

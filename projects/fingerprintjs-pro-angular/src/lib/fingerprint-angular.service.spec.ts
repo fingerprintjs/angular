@@ -70,7 +70,7 @@ describe('FingerprintService', () => {
 
     expect(fingerprintAgent.start).toHaveBeenCalledWith({
       ...fullOptions,
-      integrationInfo: [...fullOptions.integrationInfo!, `angular/${packageVersion}`],
+      integrationInfo: [...fullOptions.integrationInfo!, `fingerprintjs-pro-angular/${packageVersion}`],
     })
   })
 
@@ -82,7 +82,7 @@ describe('FingerprintService', () => {
 
     expect(fingerprintAgent.start).toHaveBeenCalledWith({
       ...plainStartOptions,
-      integrationInfo: [`angular/${packageVersion}`],
+      integrationInfo: [`fingerprintjs-pro-angular/${packageVersion}`],
     })
   })
 
@@ -98,7 +98,7 @@ describe('FingerprintService', () => {
 
     expect(fingerprintAgent.start).toHaveBeenCalledWith({
       ...optionsWithIntegration,
-      integrationInfo: ['test-integration', `angular/${packageVersion}`],
+      integrationInfo: ['test-integration', `fingerprintjs-pro-angular/${packageVersion}`],
     })
   })
 
