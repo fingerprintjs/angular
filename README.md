@@ -31,7 +31,7 @@
 
 # Fingerprint Angular
 
-Fingerprint Angular SDK is an easy way to integrate **[Fingerprint](https://fingerprint.com/)** into your Angular application. See the [`src` folder](https://github.com/fingerprintjs/angular/tree/main/src) for a full usage example.
+Fingerprint Angular SDK is an easy way to integrate **[Fingerprint](https://fingerprint.com/)** into your Angular application. See the [`src` folder](https://github.com/fingerprintjs/angular/tree/main/projects/demo-angular21/src) for a full usage example.
 
 This SDK supports v4 of the Fingerprint JavaScript agent. See the [v3 to v4 migration guide](https://docs.fingerprint.com/reference/migrating-from-v3-to-v4) for more information.
 
