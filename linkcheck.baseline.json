@@ -1,0 +1,9 @@
+{
+  "ignore": [
+    {
+      "href": "https://test/integration",
+      "page": "projects/fingerprintjs-pro-angular/src/lib/fingerprint-angular.service.spec.ts",
+      "reason": "Placeholder endpoint in a unit test, not a real URL"
+    }
+  ]
+}
