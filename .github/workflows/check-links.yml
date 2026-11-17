@@ -24,4 +24,5 @@ jobs:
             CONTRIBUTING.md
             projects/*/README.md
             projects/**/*.ts
+            bin/**/*.{js,ts}
           baseline: linkcheck.baseline.json
